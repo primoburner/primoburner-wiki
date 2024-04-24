@@ -1,0 +1,1051 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Release Notes &#8212; PrimoBurner for C++</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://wiki.primoburner.com/release-notes.html" />
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex/" />
+    <link rel="search" title="Search" href="../search/" />
+    <link rel="prev" title="What’s New" href="../whats-new/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-47FT2T8KSX"></script>
+<script>
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){ dataLayer.push(arguments); }
+                    gtag('js', new Date());
+                    gtag('config', 'G-47FT2T8KSX');
+                </script>
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo_orange.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">PrimoBurner for C++</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search/" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <p class="caption" role="heading">
+ <span class="caption-text">
+  Getting Started
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../primoburner-for-cpp/setting-license-info/">
+   Setting License Info
+  </a>
+ </li>
+</ul>
+<p class="caption" role="heading">
+ <span class="caption-text">
+  About
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about-primoburner/about-primoburner-for-c/">
+   About PrimoBurner for C++
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about-primoburner/demo-version/">
+   Demo Version
+  </a>
+ </li>
+</ul>
+<p class="caption" role="heading">
+ <span class="caption-text">
+  Docs
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../api-docs/">
+   API Docs
+  </a>
+ </li>
+</ul>
+<p class="caption" role="heading">
+ <span class="caption-text">
+  What's New
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../whats-new/">
+   What’s New
+  </a>
+ </li>
+</ul>
+<p class="caption" role="heading">
+ <span class="caption-text">
+  Release Notes
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Release Notes
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/release-notes.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#version-5-0">
+   Version 5.0
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#new">
+     New
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#fix">
+     Fix
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#version-4-7-8">
+   Version 4.7.8
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#update">
+     Update
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#version-4-7-4">
+   Version 4.7.4
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Update
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#version-4-7-3">
+   Version 4.7.3
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     Update
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#version-4-7-2">
+   Version 4.7.2
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     Update
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#version-4-7-1">
+   Version 4.7.1
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     Update
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id5">
+     Fix
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#version-4-7">
+   Version 4.7
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id6">
+     New
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id7">
+     Update
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#version-4-6-1">
+   Version 4.6.1
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id8">
+     Update
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#version-4-6">
+   Version 4.6
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id9">
+     Update
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#version-4-5">
+   Version 4.5
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id10">
+     New
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id11">
+     Update
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id12">
+     Fix
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#version-4-4-2">
+   Version 4.4.2
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id13">
+     Update
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id14">
+     Fix
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#version-4-4-1">
+   Version 4.4.1
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id15">
+     New
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id16">
+     Update
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#version-4-4">
+   Version 4.4
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id17">
+     Update
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id18">
+     Fix
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#version-4-3">
+   Version 4.3
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id19">
+     Update
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id20">
+     Fix
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Release Notes</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#version-5-0">
+   Version 5.0
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#new">
+     New
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#fix">
+     Fix
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#version-4-7-8">
+   Version 4.7.8
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#update">
+     Update
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#version-4-7-4">
+   Version 4.7.4
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Update
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#version-4-7-3">
+   Version 4.7.3
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     Update
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#version-4-7-2">
+   Version 4.7.2
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     Update
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#version-4-7-1">
+   Version 4.7.1
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     Update
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id5">
+     Fix
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#version-4-7">
+   Version 4.7
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id6">
+     New
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id7">
+     Update
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#version-4-6-1">
+   Version 4.6.1
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id8">
+     Update
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#version-4-6">
+   Version 4.6
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id9">
+     Update
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#version-4-5">
+   Version 4.5
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id10">
+     New
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id11">
+     Update
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id12">
+     Fix
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#version-4-4-2">
+   Version 4.4.2
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id13">
+     Update
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id14">
+     Fix
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#version-4-4-1">
+   Version 4.4.1
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id15">
+     New
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id16">
+     Update
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#version-4-4">
+   Version 4.4
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id17">
+     Update
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id18">
+     Fix
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#version-4-3">
+   Version 4.3
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id19">
+     Update
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id20">
+     Fix
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="release-notes">
+<h1>Release Notes<a class="headerlink" href="#release-notes" title="Permalink to this headline">#</a></h1>
+<section id="version-5-0">
+<h2>Version 5.0<a class="headerlink" href="#version-5-0" title="Permalink to this headline">#</a></h2>
+<section id="new">
+<h3>New<a class="headerlink" href="#new" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>[PB-273] - Build for macOS arm64</p></li>
+<li><p>[PB-274] - Build for Ubuntu arm64</p></li>
+<li><p>[PB-291] - Build .NET version for ARM (macOS)</p></li>
+<li><p>[PB-292] - Build .NET version for ARM (Ubuntu)</p></li>
+<li><p>[PB-298] - C++: bluray-data CLI sample  - (Windows)</p></li>
+<li><p>[PB-299] - C++: bluray-data CLI sample  - (Linux)</p></li>
+<li><p>[PB-300] - C++: bluray-data CLI sample  - (macOS)</p></li>
+<li><p>[PB-318] - Samples: Publish C++ CLI samples to GitHub</p></li>
+<li><p>[PB-320] - C++: Publish PrimoBurner Core Demo v5.0.1 to GitHub</p></li>
+<li><p>[PB-321] - .NET: Publish PrimoBurner .NET Core Demo v5.0.1 to GitHub</p></li>
+</ul>
+</section>
+<section id="fix">
+<h3>Fix<a class="headerlink" href="#fix" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>[PB-302] - ScsiInquiry takes a long time on Raspbery Pi 4 Ubuntu aarch64</p></li>
+<li><p>[PB-309] - DataDisc: Wrong creation datetime for files and directories on Linux / macOS</p></li>
+<li><p>[PB-313] - DataDisc: Wrong creation datetime for files and directories on Windows</p></li>
+<li><p>[PB-323] - Docs: C++: Fix DeviceEnum::createDevice documentation</p></li>
+<li><p>[PB-277] - Show “Unregistered version / Demo version” message for DEMO builds</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="version-4-7-8">
+<h2>Version 4.7.8<a class="headerlink" href="#version-4-7-8" title="Permalink to this headline">#</a></h2>
+<section id="update">
+<h3>Update<a class="headerlink" href="#update" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>[PB-246] - Update AVBlocks to 2.3.4</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="version-4-7-4">
+<h2>Version 4.7.4<a class="headerlink" href="#version-4-7-4" title="Permalink to this headline">#</a></h2>
+<section id="id1">
+<h3>Update<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>[PB-245] - Update AVBlocks to 2.3.3</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="version-4-7-3">
+<h2>Version 4.7.3<a class="headerlink" href="#version-4-7-3" title="Permalink to this headline">#</a></h2>
+<section id="id2">
+<h3>Update<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>[PB-243] - Update AVBlocks to 2.3.2</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="version-4-7-2">
+<h2>Version 4.7.2<a class="headerlink" href="#version-4-7-2" title="Permalink to this headline">#</a></h2>
+<section id="id3">
+<h3>Update<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>[PB-241] - Update AVBlocks to 2.3.1</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="version-4-7-1">
+<h2>Version 4.7.1<a class="headerlink" href="#version-4-7-1" title="Permalink to this headline">#</a></h2>
+<section id="id4">
+<h3>Update<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>[PB-240] – Update AVBlocks to 2.2.1</p></li>
+</ul>
+</section>
+<section id="id5">
+<h3>Fix<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>[PS-40] – Mac: Crash when enumerating devices in which there are discs with volume names shorter than 10 characters</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="version-4-7">
+<h2>Version 4.7<a class="headerlink" href="#version-4-7" title="Permalink to this headline">#</a></h2>
+<section id="id6">
+<h3>New<a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>[PB-230] – Samples: New ‘enum_devices` sample</p></li>
+<li><p>[PB-227] – Library: Windows: Support devices that do not have drive letters assigned.</p></li>
+<li><p>[PB-224] – DeviceEnum: Windows: Do not require drive letters during device enumeration</p></li>
+</ul>
+</section>
+<section id="id7">
+<h3>Update<a class="headerlink" href="#id7" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>[PB-236] – Update AVBlocks to 2.2</p></li>
+<li><p>[PB-232] – Mac: Provide 32-Bit + 64-Bit universal lib for Mac</p></li>
+<li><p>[PB-237] – Linux: Use Qt5 in GUI samples</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="version-4-6-1">
+<h2>Version 4.6.1<a class="headerlink" href="#version-4-6-1" title="Permalink to this headline">#</a></h2>
+<section id="id8">
+<h3>Update<a class="headerlink" href="#id8" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>[PB-225] – Update AVBlocks to 1.26</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="version-4-6">
+<h2>Version 4.6<a class="headerlink" href="#version-4-6" title="Permalink to this headline">#</a></h2>
+<section id="id9">
+<h3>Update<a class="headerlink" href="#id9" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>[PB-220] – Samples: Windows: Upgrade sample projects to Visual Studio 2015</p></li>
+<li><p>[PB-221] – Samples: Windows: Deprecate the CLR2 .NET projects</p></li>
+<li><p>[PB-222] – Update AVBlocks to 1.25</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="version-4-5">
+<h2>Version 4.5<a class="headerlink" href="#version-4-5" title="Permalink to this headline">#</a></h2>
+<section id="id10">
+<h3>New<a class="headerlink" href="#id10" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>[PB-216] – Device: Write+Verify recording mode for DVD-RAM and BD-RE media</p></li>
+</ul>
+</section>
+<section id="id11">
+<h3>Update<a class="headerlink" href="#id11" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>[PB-217] – Device: Rename <code class="docutils literal notranslate"><span class="pre">Device.BDRWriteVerification</span></code> to <code class="docutils literal notranslate"><span class="pre">Device.BDWriteVerify</span></code></p></li>
+<li><p>[PB-218] – Update AVBlocks to version 1.19</p></li>
+</ul>
+</section>
+<section id="id12">
+<h3>Fix<a class="headerlink" href="#id12" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>[PB-215] – System.EntryPointNotFoundException: Unable to find an entry point named ‘TocTrack_adr’ in DLL</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="version-4-4-2">
+<h2>Version 4.4.2<a class="headerlink" href="#version-4-4-2" title="Permalink to this headline">#</a></h2>
+<section id="id13">
+<h3>Update<a class="headerlink" href="#id13" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>[PB-204] – Samples: Mac: Upgrade C++ samples to Qt 5.x</p></li>
+<li><p>[PB-210] – Update AVBlocks to 1.18</p></li>
+</ul>
+</section>
+<section id="id14">
+<h3>Fix<a class="headerlink" href="#id14" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>[PB-203] – Mac: Pure virtual function called exception in ReadCDSession sample</p></li>
+<li><p>[PB-209] – Device: Device.WriteTransferRate returns zero for BD-RE media</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="version-4-4-1">
+<h2>Version 4.4.1<a class="headerlink" href="#version-4-4-1" title="Permalink to this headline">#</a></h2>
+<section id="id15">
+<h3>New<a class="headerlink" href="#id15" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>[PB-188] – Samples: .NET: New MultiAudioCD sample</p></li>
+</ul>
+</section>
+<section id="id16">
+<h3>Update<a class="headerlink" href="#id16" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>[PB-185] – Docs: .NET: Fix the code samples in the DiscLayout and DiscArchive docs</p></li>
+<li><p>[PB-186] – Docs: C++: Fix the code sample in the DiscArchive docs</p></li>
+<li><p>[PB-191] – Update AVBlocks to version 1.16</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="version-4-4">
+<h2>Version 4.4<a class="headerlink" href="#version-4-4" title="Permalink to this headline">#</a></h2>
+<section id="id17">
+<h3>Update<a class="headerlink" href="#id17" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>[PB-97] – Docs: C++: Add a page that describes the API changes for PrimoBurner 4</p></li>
+</ul>
+</section>
+<section id="id18">
+<h3>Fix<a class="headerlink" href="#id18" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>[PB-179] – .NET: CachePolicy.CacheSmallFiles causes entry point exception</p></li>
+<li><p>[PB-182] – .NET: ErrorFacility enum has the wrong values for Mac and POSIX subsytems</p></li>
+<li><p>[PB-183] – C++: AVBlocks libraries are missing from the C++ distribution</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="version-4-3">
+<h2>Version 4.3<a class="headerlink" href="#version-4-3" title="Permalink to this headline">#</a></h2>
+<section id="id19">
+<h3>Update<a class="headerlink" href="#id19" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>[PB-141] – Samples: C++: BluRayBurner: Add Close Track and Close Session options</p></li>
+<li><p>[PB-142] – Samples: C++: BluRayBurner: Choose format type and subtype before formatting.</p></li>
+</ul>
+</section>
+<section id="id20">
+<h3>Fix<a class="headerlink" href="#id20" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>[PB-131] – Write errors on PIONEER , BD-RW BDR-206D v9.56</p></li>
+<li><p>[PB-140] – Wrong seconds in B0 pointer when writing CD using WriteMethod::RawDao2352.</p></li>
+<li><p>[PB-143] – Device::isMediaFormatted reports false for formatted BD-R with spare areas (BD-R SRM-POW)</p></li>
+<li><p>[PB-144] – Last written DVD ECC block and BD Cluster is padded with zeros. This affects random disc writes.</p></li>
+<li><p>[PB-145] – Partially formatted DVD-RW media is reported as blank on some LITE-ON devices.</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="../whats-new/" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">What’s New</p>
+        </div>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Primo Software<br/>
+  
+      &copy; Copyright 2003 - 2024.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
