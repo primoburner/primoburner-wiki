@@ -1,14 +1,14 @@
 ---
 title: Developing with Visual Studio Code on Ubuntu
 metadata:
-    description: This page describes the steps needed to setup Visual Studio Code for AVBlocks development on Ubuntu
+    description: This page describes the steps needed to setup Visual Studio Code for PrimoBurner development on Ubuntu
 taxonomy:
     category: docs
 ---
 
 # Developing with Visual Studio Code on Ubuntu
 
-This topic describes the steps needed to setup Visual Studio Code for AVBlocks development on Ubuntu. These steps have been verified to work on Ubuntu 22.04.3 LTS.
+This topic describes the steps needed to setup Visual Studio Code for PrimoBurner development on Ubuntu. These steps have been verified to work on Ubuntu 22.04.3 LTS.
 
 ## Visual Studio Code
 
@@ -59,7 +59,7 @@ Add the following Visual Studio Code specific files to the `.vscode` subdir:
             "request": "launch",
             "cwd": "${workspaceFolder}",
             "linux": {
-                "program": "${workspaceFolder}/build/debug/simple-converter",
+                "program": "${workspaceFolder}/build/debug/enum-devices",
                 "MIMode": "gdb",
             },
         }    

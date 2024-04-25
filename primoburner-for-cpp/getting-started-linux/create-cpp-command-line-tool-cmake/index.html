@@ -54,6 +54,8 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../../../genindex/" />
     <link rel="search" title="Search" href="../../../search/" />
+    <link rel="next" title="Developing with Visual Studio Code on Ubuntu" href="../developing-with-vscode/" />
+    <link rel="prev" title="Getting Started - Linux" href="../" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -118,13 +120,35 @@ const thebe_selector_output = ".output, .cell_output"
   Getting Started
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../">
+   Getting Started - Linux
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Create a Command Line Tool using CMake on Ubuntu
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../developing-with-vscode/">
+     Developing with Visual Studio Code on Ubuntu
+    </a>
+   </li>
+  </ul>
+ </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../../getting-started-macos/">
    Getting Started - macOS
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -353,18 +377,13 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#update-for-avblocks">
-   Update for AVBlocks
+  <a class="reference internal nav-link" href="#update-for-primoburner">
+   Update for PrimoBurner
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#run-the-application">
    Run the application
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#troubleshooting">
-   Troubleshooting
   </a>
  </li>
 </ul>
@@ -407,18 +426,13 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#update-for-avblocks">
-   Update for AVBlocks
+  <a class="reference internal nav-link" href="#update-for-primoburner">
+   Update for PrimoBurner
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#run-the-application">
    Run the application
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#troubleshooting">
-   Troubleshooting
   </a>
  </li>
 </ul>
@@ -452,30 +466,30 @@ title="Print to PDF"
 </section>
 <section id="create-the-project-directory">
 <h2>Create the project directory<a class="headerlink" href="#create-the-project-directory" title="Permalink to this headline">#</a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>-p<span class="w"> </span>~/avblocks/cmake/simple-converter
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>-p<span class="w"> </span>~/primoburner/cmake/enum-devices
 </pre></div>
 </div>
 </section>
 <section id="create-the-cmake-project">
 <h2>Create the CMake project<a class="headerlink" href="#create-the-cmake-project" title="Permalink to this headline">#</a></h2>
 <p>Switch to the project directory:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>~/avblocks/cmake/simple-converter
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>~/primoburner/cmake/enum-devices
 </pre></div>
 </div>
 <p>Add <code class="docutils literal notranslate"><span class="pre">src/main.cpp</span></code>:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
 
 <span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Hello AVBlocks!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Hello PrimoBurner!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 <p>Add <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code>:</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">cmake_minimum_required</span><span class="p">(</span><span class="s">VERSION</span><span class="w"> </span><span class="s">3.16</span><span class="p">)</span>
 
-<span class="nb">project</span><span class="p">(</span><span class="s">simple-converter</span><span class="p">)</span>
+<span class="nb">project</span><span class="p">(</span><span class="s">enum-devices</span><span class="p">)</span>
 
-<span class="nb">add_executable</span><span class="p">(</span><span class="s">simple-converter</span><span class="w"> </span><span class="s">src/main.cpp</span><span class="p">)</span>
+<span class="nb">add_executable</span><span class="p">(</span><span class="s">enum-devices</span><span class="w"> </span><span class="s">src/main.cpp</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Add <code class="docutils literal notranslate"><span class="pre">build.sh</span></code>:</p>
@@ -496,9 +510,9 @@ build/
 </pre></div>
 </div>
 <p>You should end up with the following directory structure:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>tree<span class="w"> </span>-a<span class="w"> </span>-L<span class="w"> </span><span class="m">2</span><span class="w"> </span>simple-converter
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>tree<span class="w"> </span>-a<span class="w"> </span>-L<span class="w"> </span><span class="m">2</span><span class="w"> </span>enum-devices
 
-simple-converter
+enum-devices
 ├──<span class="w"> </span>.gitignore
 ├──<span class="w"> </span>CMakeLists.txt
 ├──<span class="w"> </span>build.sh
@@ -515,16 +529,16 @@ simple-converter
 </pre></div>
 </div>
 </section>
-<section id="update-for-avblocks">
-<h2>Update for AVBlocks<a class="headerlink" href="#update-for-avblocks" title="Permalink to this headline">#</a></h2>
+<section id="update-for-primoburner">
+<h2>Update for PrimoBurner<a class="headerlink" href="#update-for-primoburner" title="Permalink to this headline">#</a></h2>
 <ol>
-<li><p><a class="reference external" href="https://github.com/avblocks/avblocks-core/releases/">Download</a> the 64 bit version of AVBlocks for C++ (Linux). The file you need will have a name similar to <code class="docutils literal notranslate"><span class="pre">avblocks_v3.0.0-demo.1-linux.tar.gz</span></code> except for the version number which may be different.</p></li>
-<li><p>Extract the archive in a location of your choice, then copy the <code class="docutils literal notranslate"><span class="pre">include</span></code> and <code class="docutils literal notranslate"><span class="pre">lib</span></code> directories to the <code class="docutils literal notranslate"><span class="pre">avblocks</span></code> subdirectory of the CMake project directory. The CMake project directory is the directory that contains the <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> file.</p>
+<li><p><a class="reference external" href="https://github.com/primoburner/primoburner-core/releases/">Download</a> the 64 bit version of PrimoBurner for C++ (Linux). The file you need will have a name similar to <code class="docutils literal notranslate"><span class="pre">primoburner-v5.0.1-demo.1-linux.tar.gz</span></code> except for the version number which may be different.</p></li>
+<li><p>Extract the archive in a location of your choice, then copy the <code class="docutils literal notranslate"><span class="pre">include</span></code> and <code class="docutils literal notranslate"><span class="pre">lib</span></code> directories to the <code class="docutils literal notranslate"><span class="pre">primoburner</span></code> subdirectory of the CMake project directory. The CMake project directory is the directory that contains the <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> file.</p>
 <p>You should end up with a directory structure similar to the following:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>simple-converter
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>enum-devices
 ├──<span class="w"> </span>.gitignore
 ├──<span class="w"> </span>CMakeLists.txt
-├──<span class="w"> </span>avblocks
+├──<span class="w"> </span>primoburner
 │<span class="w">   </span>├──<span class="w"> </span>include
 │<span class="w">   </span>└──<span class="w"> </span>lib
 ├──<span class="w"> </span>build.sh
@@ -537,15 +551,15 @@ simple-converter
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">.</span><span class="n">DS_Store</span>
 <span class="o">.</span><span class="n">cache</span><span class="o">/</span>
 <span class="n">build</span><span class="o">/</span>
-<span class="n">avblocks</span><span class="o">/</span>
+<span class="n">primoburner</span><span class="o">/</span>
 </pre></div>
 </div>
 </li>
 <li><p>Replace the contents of <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> with this code:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">cmake_minimum_required</span><span class="p">(</span><span class="n">VERSION</span><span class="w"> </span><span class="mf">3.16</span><span class="p">)</span>
 
-<span class="n">project</span><span class="p">(</span><span class="n">simple</span><span class="o">-</span><span class="n">converter</span><span class="p">)</span>
-<span class="n">set</span><span class="w"> </span><span class="p">(</span><span class="n">target</span><span class="w"> </span><span class="n">simple</span><span class="o">-</span><span class="n">converter</span><span class="p">)</span>
+<span class="n">project</span><span class="p">(</span><span class="k">enum</span><span class="o">-</span><span class="n">devices</span><span class="p">)</span>
+<span class="n">set</span><span class="w"> </span><span class="p">(</span><span class="n">target</span><span class="w"> </span><span class="k">enum</span><span class="o">-</span><span class="n">devices</span><span class="p">)</span>
 
 <span class="n">add_executable</span><span class="p">(</span><span class="n">$</span><span class="p">{</span><span class="n">target</span><span class="p">})</span>
 
@@ -558,11 +572,11 @@ simple-converter
 <span class="n">target_compile_options</span><span class="p">(</span><span class="n">$</span><span class="p">{</span><span class="n">target</span><span class="p">}</span><span class="w"> </span><span class="n">PRIVATE</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="p">)</span>
 
 <span class="cp"># includes</span>
-<span class="n">target_include_directories</span><span class="p">(</span><span class="n">$</span><span class="p">{</span><span class="n">target</span><span class="p">}</span><span class="w"> </span><span class="n">PUBLIC</span><span class="w"> </span><span class="n">avblocks</span><span class="o">/</span><span class="n">include</span><span class="p">)</span>
+<span class="n">target_include_directories</span><span class="p">(</span><span class="n">$</span><span class="p">{</span><span class="n">target</span><span class="p">}</span><span class="w"> </span><span class="n">PUBLIC</span><span class="w"> </span><span class="n">primoburner</span><span class="o">/</span><span class="n">include</span><span class="p">)</span>
 
 <span class="cp"># libs</span>
-<span class="n">target_link_directories</span><span class="p">(</span><span class="n">$</span><span class="p">{</span><span class="n">target</span><span class="p">}</span><span class="w"> </span><span class="n">PRIVATE</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">PROJECT_SOURCE_DIR</span><span class="p">}</span><span class="o">/</span><span class="n">avblocks</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">x64</span><span class="p">)</span>
-<span class="n">target_link_libraries</span><span class="p">(</span><span class="n">$</span><span class="p">{</span><span class="n">target</span><span class="p">}</span><span class="w"> </span><span class="n">libAVBlocks64</span><span class="p">.</span><span class="n">so</span><span class="p">)</span>
+<span class="n">target_link_directories</span><span class="p">(</span><span class="n">$</span><span class="p">{</span><span class="n">target</span><span class="p">}</span><span class="w"> </span><span class="n">PRIVATE</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">PROJECT_SOURCE_DIR</span><span class="p">}</span><span class="o">/</span><span class="n">primoburner</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">x64</span><span class="p">)</span>
+<span class="n">target_link_libraries</span><span class="p">(</span><span class="n">$</span><span class="p">{</span><span class="n">target</span><span class="p">}</span><span class="w"> </span><span class="n">libPrimoBurner64</span><span class="p">.</span><span class="n">so</span><span class="p">)</span>
 
 <span class="cp"># sources</span>
 <span class="n">file</span><span class="p">(</span><span class="n">GLOB</span><span class="w"> </span><span class="n">source</span><span class="w"> </span><span class="s">&quot;src/*.cpp&quot;</span><span class="p">)</span>
@@ -573,42 +587,47 @@ simple-converter
 <li><p>Replace the contents of <code class="docutils literal notranslate"><span class="pre">main.cpp</span></code> with this code:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//</span>
 <span class="c1">//  main.cpp</span>
-<span class="c1">//  simple-converter</span>
+<span class="c1">//  enum-devices</span>
 <span class="c1">//</span>
 
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;primo/avblocks/avb.h&gt;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;primo/platform/reference++.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;primo/burner/pb.h&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;primo/platform/ustring.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;primo/platform/reference++.h&gt;</span>
 
-<span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">primo</span><span class="p">;</span>
-<span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">primo</span><span class="o">::</span><span class="nn">codecs</span><span class="p">;</span>
-<span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">primo</span><span class="o">::</span><span class="nn">avblocks</span><span class="p">;</span>
+<span class="k">namespace</span><span class="w"> </span><span class="nn">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nn">primo</span><span class="p">;</span>
+<span class="k">namespace</span><span class="w"> </span><span class="nn">pb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nn">primo</span><span class="o">::</span><span class="nn">burner</span><span class="p">;</span>
 
-<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">argv</span><span class="p">[])</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">Library</span><span class="o">::</span><span class="n">initialize</span><span class="p">();</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">argv</span><span class="p">[])</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Create engine</span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">engine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="o">::</span><span class="n">make_ref</span><span class="p">(</span><span class="n">pb</span><span class="o">::</span><span class="n">Library</span><span class="o">::</span><span class="n">createEngine</span><span class="p">());</span>
 
-<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">inputFile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">primo</span><span class="o">::</span><span class="n">ustring</span><span class="p">(</span><span class="s">&quot;AAP.m4v&quot;</span><span class="p">);</span>
-<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">outputFile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">primo</span><span class="o">::</span><span class="n">ustring</span><span class="p">(</span><span class="s">&quot;AAP.mp4&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// Initialize engine</span>
+<span class="w">    </span><span class="n">engine</span><span class="o">-&gt;</span><span class="n">initialize</span><span class="p">();</span>
 
-<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">inputInfo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">primo</span><span class="o">::</span><span class="n">make_ref</span><span class="p">(</span><span class="n">Library</span><span class="o">::</span><span class="n">createMediaInfo</span><span class="p">());</span>
-<span class="w">    </span><span class="n">inputInfo</span><span class="o">-&gt;</span><span class="n">inputs</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">at</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">setFile</span><span class="p">(</span><span class="n">inputFile</span><span class="p">.</span><span class="n">u16</span><span class="p">());</span>
+<span class="w">    </span><span class="c1">// create device enumerator</span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">enumerator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="o">::</span><span class="n">make_ref</span><span class="p">(</span><span class="n">engine</span><span class="o">-&gt;</span><span class="n">createDeviceEnumerator</span><span class="p">());</span>
 
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">inputInfo</span><span class="o">-&gt;</span><span class="n">open</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">inputSocket</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">primo</span><span class="o">::</span><span class="n">make_ref</span><span class="p">(</span><span class="n">Library</span><span class="o">::</span><span class="n">createMediaSocket</span><span class="p">(</span><span class="n">inputInfo</span><span class="p">.</span><span class="n">get</span><span class="p">()));</span>
-<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">outputSocket</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">primo</span><span class="o">::</span><span class="n">make_ref</span><span class="p">(</span><span class="n">Library</span><span class="o">::</span><span class="n">createMediaSocket</span><span class="p">(</span><span class="n">Preset</span><span class="o">::</span><span class="n">Video</span><span class="o">::</span><span class="n">Generic</span><span class="o">::</span><span class="n">MP4</span><span class="o">::</span><span class="n">Base_H264_AAC</span><span class="p">));</span>
-<span class="w">        </span><span class="n">outputSocket</span><span class="o">-&gt;</span><span class="n">setFile</span><span class="p">(</span><span class="n">outputFile</span><span class="p">.</span><span class="n">u16</span><span class="p">());</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">enumerator</span><span class="o">-&gt;</span><span class="n">count</span><span class="p">();</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// create a device; do not ask for exclusive access</span>
+<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">device</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="o">::</span><span class="n">make_ref</span><span class="p">(</span><span class="n">enumerator</span><span class="o">-&gt;</span><span class="n">createDevice</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">));</span>
+<span class="w">        </span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">device</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="p">;</span>
 
-<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">transcoder</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">primo</span><span class="o">::</span><span class="n">make_ref</span><span class="p">(</span><span class="n">Library</span><span class="o">::</span><span class="n">createTranscoder</span><span class="p">());</span>
-<span class="w">        </span><span class="n">transcoder</span><span class="o">-&gt;</span><span class="n">inputs</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">add</span><span class="p">(</span><span class="n">inputSocket</span><span class="p">.</span><span class="n">get</span><span class="p">());</span>
-<span class="w">        </span><span class="n">transcoder</span><span class="o">-&gt;</span><span class="n">outputs</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">add</span><span class="p">(</span><span class="n">outputSocket</span><span class="p">.</span><span class="n">get</span><span class="p">());</span>
+<span class="w">            </span><span class="k">auto</span><span class="w"> </span><span class="n">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="o">::</span><span class="n">ustring</span><span class="p">(</span><span class="n">device</span><span class="o">-&gt;</span><span class="n">description</span><span class="p">());</span>
 
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">transcoder</span><span class="o">-&gt;</span><span class="n">open</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">transcoder</span><span class="o">-&gt;</span><span class="n">run</span><span class="p">();</span>
-<span class="w">            </span><span class="n">transcoder</span><span class="o">-&gt;</span><span class="n">close</span><span class="p">();</span>
+<span class="w">            </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Device       : &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+<span class="w">            </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Description  : &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">description</span><span class="p">.</span><span class="n">str</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+
+<span class="w">            </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="n">Library</span><span class="o">::</span><span class="n">shutdown</span><span class="p">();</span>
+<span class="w">    </span><span class="c1">// terminate engine</span>
+<span class="w">    </span><span class="n">engine</span><span class="o">-&gt;</span><span class="n">shutdown</span><span class="p">();</span>
+<span class="w">    </span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
@@ -623,21 +642,9 @@ simple-converter
 </section>
 <section id="run-the-application">
 <h2>Run the application<a class="headerlink" href="#run-the-application" title="Permalink to this headline">#</a></h2>
-<ol>
-<li><p>Download the <code class="docutils literal notranslate"><span class="pre">AAP.m4v</span></code> HD movie from the <a class="reference external" href="https://archive.org/details/Wildlife-filming">Internet Archive</a> and save it in the project directory.</p></li>
-<li><p>Run the application:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./build/debug/simple-converter
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./build/debug/enum-devices
 </pre></div>
 </div>
-<p>Wait for the Transcoder to finish - it will take a few minutes. The converted file <code class="docutils literal notranslate"><span class="pre">AAP.mp4</span></code> will be in the project directory.</p>
-</li>
-</ol>
-</section>
-<section id="troubleshooting">
-<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline">#</a></h2>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">transcoder-&gt;open()</span></code> may fail if there is already a file <code class="docutils literal notranslate"><span class="pre">AAP.mp4</span></code> in the project directory. Delete <code class="docutils literal notranslate"><span class="pre">AAP.mp4</span></code> to solve that.</p></li>
-</ul>
 </section>
 </section>
 
@@ -668,6 +675,20 @@ simple-converter
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="../" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Getting Started - Linux</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../developing-with-vscode/" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Developing with Visual Studio Code on Ubuntu</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             </footer>
         </div>

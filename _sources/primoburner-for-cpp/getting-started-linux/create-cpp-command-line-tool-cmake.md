@@ -1,7 +1,7 @@
 ---
 title: Create a Command Line Tool using CMake on Ubuntu
 metadata:
-    description: This page describes the steps needed to configure CMake project for AVBlocks Command Line Tool on Ubuntu
+    description: This page describes the steps needed to configure CMake project for PrimoBurner Command Line Tool on Ubuntu
 taxonomy:
     category: docs
 ---
@@ -35,7 +35,7 @@ If you don't have those tools follow the steps in the [Setup C++ development env
 ## Create the project directory
 
 ```bash
-mkdir -p ~/avblocks/cmake/simple-converter
+mkdir -p ~/primoburner/cmake/enum-devices
 ```
 
 ## Create the CMake project 
@@ -43,7 +43,7 @@ mkdir -p ~/avblocks/cmake/simple-converter
 Switch to the project directory:
 
 ```bash
-cd ~/avblocks/cmake/simple-converter
+cd ~/primoburner/cmake/enum-devices
 ```
 
 Add `src/main.cpp`:
@@ -52,7 +52,7 @@ Add `src/main.cpp`:
 #include <iostream>
 
 int main() {
-  std::cout << "Hello AVBlocks!\n";
+  std::cout << "Hello PrimoBurner!\n";
 }
 ```
 
@@ -61,9 +61,9 @@ Add `CMakeLists.txt`:
 ```cmake
 cmake_minimum_required(VERSION 3.16)
 
-project(simple-converter)
+project(enum-devices)
 
-add_executable(simple-converter src/main.cpp)
+add_executable(enum-devices src/main.cpp)
 ```
 
 Add `build.sh`:
@@ -90,9 +90,9 @@ build/
 You should end up with the following directory structure:
 
 ```sh
-tree -a -L 2 simple-converter
+tree -a -L 2 enum-devices
 
-simple-converter
+enum-devices
 ├── .gitignore
 ├── CMakeLists.txt
 ├── build.sh
@@ -108,19 +108,19 @@ chmod +x build.sh
 ./build.sh
 ```
 
-## Update for AVBlocks
+## Update for PrimoBurner
 
-1. [Download](https://github.com/avblocks/avblocks-core/releases/) the 64 bit version of AVBlocks for C++ (Linux). The file you need will have a name similar to `avblocks_v3.0.0-demo.1-linux.tar.gz` except for the version number which may be different. 
+1. [Download](https://github.com/primoburner/primoburner-core/releases/) the 64 bit version of PrimoBurner for C++ (Linux). The file you need will have a name similar to `primoburner-v5.0.1-demo.1-linux.tar.gz` except for the version number which may be different. 
 
-2. Extract the archive in a location of your choice, then copy the `include` and `lib` directories to the `avblocks` subdirectory of the CMake project directory. The CMake project directory is the directory that contains the `CMakeLists.txt` file.
+2. Extract the archive in a location of your choice, then copy the `include` and `lib` directories to the `primoburner` subdirectory of the CMake project directory. The CMake project directory is the directory that contains the `CMakeLists.txt` file.
 
     You should end up with a directory structure similar to the following:
 
     ```sh
-    simple-converter
+    enum-devices
     ├── .gitignore
     ├── CMakeLists.txt
-    ├── avblocks
+    ├── primoburner
     │   ├── include
     │   └── lib
     ├── build.sh
@@ -134,7 +134,7 @@ chmod +x build.sh
     .DS_Store
     .cache/
     build/
-    avblocks/
+    primoburner/
     ```
 
 3. Replace the contents of `CMakeLists.txt` with this code:
@@ -142,8 +142,8 @@ chmod +x build.sh
     ```cpp
     cmake_minimum_required(VERSION 3.16)
 
-    project(simple-converter)
-    set (target simple-converter)
+    project(enum-devices)
+    set (target enum-devices)
 
     add_executable(${target})
 
@@ -156,11 +156,11 @@ chmod +x build.sh
     target_compile_options(${target} PRIVATE -g)
 
     # includes
-    target_include_directories(${target} PUBLIC avblocks/include)
+    target_include_directories(${target} PUBLIC primoburner/include)
 
     # libs
-    target_link_directories(${target} PRIVATE ${PROJECT_SOURCE_DIR}/avblocks/lib/x64)
-    target_link_libraries(${target} libAVBlocks64.so)
+    target_link_directories(${target} PRIVATE ${PROJECT_SOURCE_DIR}/primoburner/lib/x64)
+    target_link_libraries(${target} libPrimoBurner64.so)
 
     # sources
     file(GLOB source "src/*.cpp")
@@ -172,42 +172,47 @@ chmod +x build.sh
     ```cpp
     //
     //  main.cpp
-    //  simple-converter
+    //  enum-devices
     //
 
-    #include <primo/avblocks/avb.h>
-    #include <primo/platform/reference++.h>
+    #include <iostream>
+
+    #include <primo/burner/pb.h>
     #include <primo/platform/ustring.h>
+    #include <primo/platform/reference++.h>
 
-    using namespace primo;
-    using namespace primo::codecs;
-    using namespace primo::avblocks;
+    namespace p = primo;
+    namespace pb = primo::burner;
 
-    int main(int argc, const char *argv[]) {
-        Library::initialize();
+    int main(int argc, const char * argv[]) {
+        // Create engine
+        auto engine = p::make_ref(pb::Library::createEngine());
 
-        auto inputFile = primo::ustring("AAP.m4v");
-        auto outputFile = primo::ustring("AAP.mp4");
+        // Initialize engine
+        engine->initialize();
 
-        auto inputInfo = primo::make_ref(Library::createMediaInfo());
-        inputInfo->inputs()->at(0)->setFile(inputFile.u16());
+        // create device enumerator
+        auto enumerator = p::make_ref(engine->createDeviceEnumerator());
 
-        if (inputInfo->open()) {
-            auto inputSocket = primo::make_ref(Library::createMediaSocket(inputInfo.get()));
-            auto outputSocket = primo::make_ref(Library::createMediaSocket(Preset::Video::Generic::MP4::Base_H264_AAC));
-            outputSocket->setFile(outputFile.u16());
+        for (int i = 0; i < enumerator->count(); i++) {
+            // create a device; do not ask for exclusive access
+            auto device = p::make_ref(enumerator->createDevice(i, false));
+            
+            if (device) {
+                using namespace std;
 
-            auto transcoder = primo::make_ref(Library::createTranscoder());
-            transcoder->inputs()->add(inputSocket.get());
-            transcoder->outputs()->add(outputSocket.get());
+                auto description = p::ustring(device->description());
 
-            if (transcoder->open()) {
-                transcoder->run();
-                transcoder->close();
+                cout << "Device       : " << i << endl;
+                cout << "Description  : " << description.str() << endl;
+
+                cout << endl;
             }
         }
 
-        Library::shutdown();
+        // terminate engine
+        engine->shutdown();
+        
         return 0;
     }
     ```
@@ -219,16 +224,6 @@ chmod +x build.sh
     ```
 ## Run the application
 
-1. Download the `AAP.m4v` HD movie from the [Internet Archive](https://archive.org/details/Wildlife-filming) and save it in the project directory.
-
-2. Run the application:
-
-    ```bash
-    ./build/debug/simple-converter
-    ```
-    
-    Wait for the Transcoder to finish - it will take a few minutes. The converted file `AAP.mp4` will be in the project directory.
-	
-## Troubleshooting
-
-* `transcoder->open()` may fail if there is already a file `AAP.mp4` in the project directory. Delete `AAP.mp4` to solve that.         
+```bash
+./build/debug/enum-devices
+```  
