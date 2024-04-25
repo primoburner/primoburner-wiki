@@ -1,11 +1,11 @@
 ---
 title: Getting Started - macOS
 metadata:
-    description: Steps to configure your environment for AVBlocks development on macOS.
+    description: Steps to configure your environment for PrimoBurner development on macOS.
 taxonomy:
     category: docs
 ---
 
 # Getting Started - macOS
 
-Steps to configure your environment for AVBlocks development on macOS.
+Steps to configure your environment for PrimoBurner development on macOS.

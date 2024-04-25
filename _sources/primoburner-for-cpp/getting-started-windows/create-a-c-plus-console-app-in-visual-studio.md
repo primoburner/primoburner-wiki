@@ -12,63 +12,75 @@ This topic describes the steps needed to configure a C++ Console App in Visual S
 
 ## Create the Visual Studio project
 
-1. Create a C++, Console App in Visual Studio. Name the project `simple-converter`. Check `Place solution and project in the same directory`. 
+1. Create a C++, Console App in Visual Studio. Name the project `enum-devices`. Check `Place solution and project in the same directory`. 
 
-2. [Download](https://github.com/avblocks/avblocks-core/releases/) the 64 bit version of AVBlocks for C++ (Windows). The file you need will have a name similar to `avblocks_v3.0.0-demo.1-windows.zip` - the version number may differ. 
+2. [Download](https://github.com/primoburner/primoburner-core/releases/) the 64 bit version of PrimoBurner for C++ (Windows). The file you need will have a name similar to `primoburner-v5.0.1-demo.1-windows.zip` - the version number may differ. 
 
-3. Extract the ZIP archive in a location of your choice, then copy the `include` and `lib` directories to the `avblocks` subdirectory of the Visual Studio solution directory. The Visual Studio solution is the directory that contains the `simple-converter.sln` solution file.
+3. Extract the ZIP archive in a location of your choice, then copy the `include` and `lib` directories to the `primoburner` subdirectory of the Visual Studio solution directory. The Visual Studio solution is the directory that contains the `enum-devices.sln` solution file.
     
     You should end up with a directory structure similar to the following:
 
     ```
-    simple-converter
-    ├───avblocks
+    enum-devices
+    ├───primoburner
     │   ├───include
     │   └───lib
-    ├───simple-converter.cpp
-    ├───simple-converter.sln
-    └───simple-converter.vcxproj
+    ├───enum-devices.cpp
+    ├───enum-devices.sln
+    └───enum-devices.vcxproj
     ```
 
-4. Replace the contents of `simple-converter.cpp` with this code:
+4. Replace the contents of `enum-devices.cpp` with this code:
 
     ```cpp
-    #include <primo/avblocks/avb.h>
+    // enum-devices.cpp : This file contains the 'main' function. Program execution begins and ends there.
+    //
+
+    // Including SDKDDKVer.h defines the highest available Windows platform.
+
+    // If you wish to build your application for a previous Windows platform, include WinSDKVer.h and
+    // set the _WIN32_WINNT macro to the platform you wish to support before including SDKDDKVer.h.
+
+    #include <SDKDDKVer.h>
+
+    #include <iostream>
+
+    #include <primo/burner/pb.h>
     #include <primo/platform/reference++.h>
 
-    // link with AVBlocks64.lib
-    #pragma comment(lib, "./avblocks/lib/x64/AVBlocks64.lib")
+    namespace p = primo;
+    namespace pb = primo::burner;
 
-    using namespace primo::codecs;
-    using namespace primo::avblocks;
+    // link with PrimoBurner64.lib
+    #pragma comment(lib, "./primoburner/lib/x64/PrimoBurner64.lib")
 
-    int main(int argc, const char * argv[]) {
-        // needed for WMV
-        CoInitializeEx(nullptr, COINITBASE_MULTITHREADED);
+    int main()
+    {
+        // Create engine
+        auto engine = p::make_ref(pb::Library::createEngine());
 
-        Library::initialize();
+        // Initialize engine
+        engine->initialize();
 
-        auto inputInfo = primo::make_ref(Library::createMediaInfo());
-        inputInfo->inputs()->at(0)->setFile(L"Wildlife.wmv");
+        // create device enumerator
+        auto enumerator = p::make_ref(engine->createDeviceEnumerator());
 
-        if (inputInfo->open()) {
-            auto inputSocket = primo::make_ref(Library::createMediaSocket(inputInfo.get()));
-            auto outputSocket = primo::make_ref(Library::createMediaSocket(Preset::Video::Generic::MP4::Base_H264_AAC));
-            outputSocket->setFile(L"Wildlife.mp4");
+        for (int i = 0; i < enumerator->count(); i++) {
+            // create a device; do not ask for exclusive access
+            auto device = p::make_ref(enumerator->createDevice(i, false));
+            
+            if (device) {
+                using namespace std;
 
-            auto transcoder = primo::make_ref(Library::createTranscoder());
-            transcoder->inputs()->add(inputSocket.get());
-            transcoder->outputs()->add(outputSocket.get());
+                wcout << "Device       : " << i  << endl;
+                wcout << "Description  : " << device->description() << endl;
 
-            if (transcoder->open()) {
-                transcoder->run();
-                transcoder->close();
+                wcout << endl;
             }
         }
 
-        Library::shutdown();
-
-        CoUninitialize();
+        // terminate engine
+        engine->shutdown();
 
         return 0;
     }
@@ -76,20 +88,14 @@ This topic describes the steps needed to configure a C++ Console App in Visual S
 
 5. In Visual Studio, select `Build | Configuration Manager` from the menu, then select the `x64` platform to the solution platforms.
 
-6. In Visual Studio, select `Project | simple-converter Properties` from the menu, then `C++ | General`, then add `./avblocks/include` to `Additional Include Directories`.
+6. In Visual Studio, select `Project | enum-devices Properties` from the menu, then `C++ | General`, then add `./primoburner/include` to `Additional Include Directories`.
 
 7. Build the project (Ctrl + Shift + B).
 
-8. Copy the file `AVBlocks64.dll` from `avblocks/lib/x64` to `x64/Debug`. 
+8. Copy the file `PrimoBurner64.dll` from `primoburner/lib/x64` to `x64/Debug`. 
 
-## Run the application
-
-1. Download the `Wildlife.wmv` HD movie from the [Internet Archive](https://archive.org/download/WildlifeHd/Wildlife.wmv) and save it in the Visual Studio solution directory (next to the  `simple-converter.sln` solution file).
-
-2. Run the application in Visual Studio. Wait a few seconds for the Transcoder to finish. The converted file `Wildlife.mp4` will be in the solution directory.   
+9. Run the application in Visual Studio. You should see a list of all CD / DVD / BD devices that are connected to the system.
 
 ## Troubleshooting
 
-* You may get `The program can't start because AVBlocks64.dll is missing from your computer. Try reinstalling the program to fix this problem.` or a similar message. To fix that, copy the file `AVBlocks64.dll` from `avblocks/lib/x64` to `x64/Debug`.
-
-* `transcoder->open()` may fail if there is already a file `Wildlife.mp4` in the project directory. Delete `Wildlife.mp4` to solve that.   
+* You may get `The program can't start because PrimoBurner64.dll is missing from your computer. Try reinstalling the program to fix this problem.` or a similar message. To fix that, copy the file `PrimoBurner64.dll` from `primoburner/lib/x64` to `x64/Debug`.

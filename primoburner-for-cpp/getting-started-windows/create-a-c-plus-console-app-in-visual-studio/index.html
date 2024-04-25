@@ -54,6 +54,8 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../../../genindex/" />
     <link rel="search" title="Search" href="../../../search/" />
+    <link rel="next" title="Setting License Info" href="../../setting-license-info/" />
+    <link rel="prev" title="Getting Started - Windows" href="../" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -118,7 +120,7 @@ const thebe_selector_output = ".output, .cell_output"
   Getting Started
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../../getting-started-linux/">
    Getting Started - Linux
@@ -164,6 +166,23 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="../../getting-started-macos/developing-with-vscode/">
      Developing with Visual Studio Code on macOS
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../">
+   Getting Started - Windows
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Create a Console App in Visual Studio on Windows
     </a>
    </li>
   </ul>
@@ -360,11 +379,6 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#run-the-application">
-   Run the application
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#troubleshooting">
    Troubleshooting
   </a>
@@ -394,11 +408,6 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#run-the-application">
-   Run the application
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#troubleshooting">
    Troubleshooting
   </a>
@@ -419,57 +428,69 @@ title="Print to PDF"
 <section id="create-the-visual-studio-project">
 <h2>Create the Visual Studio project<a class="headerlink" href="#create-the-visual-studio-project" title="Permalink to this headline">#</a></h2>
 <ol>
-<li><p>Create a C++, Console App in Visual Studio. Name the project <code class="docutils literal notranslate"><span class="pre">simple-converter</span></code>. Check <code class="docutils literal notranslate"><span class="pre">Place</span> <span class="pre">solution</span> <span class="pre">and</span> <span class="pre">project</span> <span class="pre">in</span> <span class="pre">the</span> <span class="pre">same</span> <span class="pre">directory</span></code>.</p></li>
-<li><p><a class="reference external" href="https://github.com/avblocks/avblocks-core/releases/">Download</a> the 64 bit version of AVBlocks for C++ (Windows). The file you need will have a name similar to <code class="docutils literal notranslate"><span class="pre">avblocks_v3.0.0-demo.1-windows.zip</span></code> - the version number may differ.</p></li>
-<li><p>Extract the ZIP archive in a location of your choice, then copy the <code class="docutils literal notranslate"><span class="pre">include</span></code> and <code class="docutils literal notranslate"><span class="pre">lib</span></code> directories to the <code class="docutils literal notranslate"><span class="pre">avblocks</span></code> subdirectory of the Visual Studio solution directory. The Visual Studio solution is the directory that contains the <code class="docutils literal notranslate"><span class="pre">simple-converter.sln</span></code> solution file.</p>
+<li><p>Create a C++, Console App in Visual Studio. Name the project <code class="docutils literal notranslate"><span class="pre">enum-devices</span></code>. Check <code class="docutils literal notranslate"><span class="pre">Place</span> <span class="pre">solution</span> <span class="pre">and</span> <span class="pre">project</span> <span class="pre">in</span> <span class="pre">the</span> <span class="pre">same</span> <span class="pre">directory</span></code>.</p></li>
+<li><p><a class="reference external" href="https://github.com/primoburner/primoburner-core/releases/">Download</a> the 64 bit version of PrimoBurner for C++ (Windows). The file you need will have a name similar to <code class="docutils literal notranslate"><span class="pre">primoburner-v5.0.1-demo.1-windows.zip</span></code> - the version number may differ.</p></li>
+<li><p>Extract the ZIP archive in a location of your choice, then copy the <code class="docutils literal notranslate"><span class="pre">include</span></code> and <code class="docutils literal notranslate"><span class="pre">lib</span></code> directories to the <code class="docutils literal notranslate"><span class="pre">primoburner</span></code> subdirectory of the Visual Studio solution directory. The Visual Studio solution is the directory that contains the <code class="docutils literal notranslate"><span class="pre">enum-devices.sln</span></code> solution file.</p>
 <p>You should end up with a directory structure similar to the following:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>simple-converter
-├───avblocks
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>enum-devices
+├───primoburner
 │   ├───include
 │   └───lib
-├───simple-converter.cpp
-├───simple-converter.sln
-└───simple-converter.vcxproj
+├───enum-devices.cpp
+├───enum-devices.sln
+└───enum-devices.vcxproj
 </pre></div>
 </div>
 </li>
-<li><p>Replace the contents of <code class="docutils literal notranslate"><span class="pre">simple-converter.cpp</span></code> with this code:</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;primo/avblocks/avb.h&gt;</span>
+<li><p>Replace the contents of <code class="docutils literal notranslate"><span class="pre">enum-devices.cpp</span></code> with this code:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// enum-devices.cpp : This file contains the &#39;main&#39; function. Program execution begins and ends there.</span>
+<span class="c1">//</span>
+
+<span class="c1">// Including SDKDDKVer.h defines the highest available Windows platform.</span>
+
+<span class="c1">// If you wish to build your application for a previous Windows platform, include WinSDKVer.h and</span>
+<span class="c1">// set the _WIN32_WINNT macro to the platform you wish to support before including SDKDDKVer.h.</span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;SDKDDKVer.h&gt;</span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;primo/burner/pb.h&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;primo/platform/reference++.h&gt;</span>
 
-<span class="c1">// link with AVBlocks64.lib</span>
-<span class="cp">#pragma comment(lib, &quot;./avblocks/lib/x64/AVBlocks64.lib&quot;)</span>
+<span class="k">namespace</span><span class="w"> </span><span class="nn">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nn">primo</span><span class="p">;</span>
+<span class="k">namespace</span><span class="w"> </span><span class="nn">pb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nn">primo</span><span class="o">::</span><span class="nn">burner</span><span class="p">;</span>
 
-<span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">primo</span><span class="o">::</span><span class="nn">codecs</span><span class="p">;</span>
-<span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">primo</span><span class="o">::</span><span class="nn">avblocks</span><span class="p">;</span>
+<span class="c1">// link with PrimoBurner64.lib</span>
+<span class="cp">#pragma comment(lib, &quot;./primoburner/lib/x64/PrimoBurner64.lib&quot;)</span>
 
-<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">argv</span><span class="p">[])</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="c1">// needed for WMV</span>
-<span class="w">    </span><span class="n">CoInitializeEx</span><span class="p">(</span><span class="k">nullptr</span><span class="p">,</span><span class="w"> </span><span class="n">COINITBASE_MULTITHREADED</span><span class="p">);</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">// Create engine</span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">engine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="o">::</span><span class="n">make_ref</span><span class="p">(</span><span class="n">pb</span><span class="o">::</span><span class="n">Library</span><span class="o">::</span><span class="n">createEngine</span><span class="p">());</span>
 
-<span class="w">    </span><span class="n">Library</span><span class="o">::</span><span class="n">initialize</span><span class="p">();</span>
+<span class="w">    </span><span class="c1">// Initialize engine</span>
+<span class="w">    </span><span class="n">engine</span><span class="o">-&gt;</span><span class="n">initialize</span><span class="p">();</span>
 
-<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">inputInfo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">primo</span><span class="o">::</span><span class="n">make_ref</span><span class="p">(</span><span class="n">Library</span><span class="o">::</span><span class="n">createMediaInfo</span><span class="p">());</span>
-<span class="w">    </span><span class="n">inputInfo</span><span class="o">-&gt;</span><span class="n">inputs</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">at</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">setFile</span><span class="p">(</span><span class="sa">L</span><span class="s">&quot;Wildlife.wmv&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// create device enumerator</span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">enumerator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="o">::</span><span class="n">make_ref</span><span class="p">(</span><span class="n">engine</span><span class="o">-&gt;</span><span class="n">createDeviceEnumerator</span><span class="p">());</span>
 
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">inputInfo</span><span class="o">-&gt;</span><span class="n">open</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">inputSocket</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">primo</span><span class="o">::</span><span class="n">make_ref</span><span class="p">(</span><span class="n">Library</span><span class="o">::</span><span class="n">createMediaSocket</span><span class="p">(</span><span class="n">inputInfo</span><span class="p">.</span><span class="n">get</span><span class="p">()));</span>
-<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">outputSocket</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">primo</span><span class="o">::</span><span class="n">make_ref</span><span class="p">(</span><span class="n">Library</span><span class="o">::</span><span class="n">createMediaSocket</span><span class="p">(</span><span class="n">Preset</span><span class="o">::</span><span class="n">Video</span><span class="o">::</span><span class="n">Generic</span><span class="o">::</span><span class="n">MP4</span><span class="o">::</span><span class="n">Base_H264_AAC</span><span class="p">));</span>
-<span class="w">        </span><span class="n">outputSocket</span><span class="o">-&gt;</span><span class="n">setFile</span><span class="p">(</span><span class="sa">L</span><span class="s">&quot;Wildlife.mp4&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">enumerator</span><span class="o">-&gt;</span><span class="n">count</span><span class="p">();</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// create a device; do not ask for exclusive access</span>
+<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">device</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="o">::</span><span class="n">make_ref</span><span class="p">(</span><span class="n">enumerator</span><span class="o">-&gt;</span><span class="n">createDevice</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">));</span>
+<span class="w">        </span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">device</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="p">;</span>
 
-<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">transcoder</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">primo</span><span class="o">::</span><span class="n">make_ref</span><span class="p">(</span><span class="n">Library</span><span class="o">::</span><span class="n">createTranscoder</span><span class="p">());</span>
-<span class="w">        </span><span class="n">transcoder</span><span class="o">-&gt;</span><span class="n">inputs</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">add</span><span class="p">(</span><span class="n">inputSocket</span><span class="p">.</span><span class="n">get</span><span class="p">());</span>
-<span class="w">        </span><span class="n">transcoder</span><span class="o">-&gt;</span><span class="n">outputs</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">add</span><span class="p">(</span><span class="n">outputSocket</span><span class="p">.</span><span class="n">get</span><span class="p">());</span>
+<span class="w">            </span><span class="n">wcout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Device       : &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">i</span><span class="w">  </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+<span class="w">            </span><span class="n">wcout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Description  : &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">device</span><span class="o">-&gt;</span><span class="n">description</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
 
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">transcoder</span><span class="o">-&gt;</span><span class="n">open</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">transcoder</span><span class="o">-&gt;</span><span class="n">run</span><span class="p">();</span>
-<span class="w">            </span><span class="n">transcoder</span><span class="o">-&gt;</span><span class="n">close</span><span class="p">();</span>
+<span class="w">            </span><span class="n">wcout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="n">Library</span><span class="o">::</span><span class="n">shutdown</span><span class="p">();</span>
-
-<span class="w">    </span><span class="n">CoUninitialize</span><span class="p">();</span>
+<span class="w">    </span><span class="c1">// terminate engine</span>
+<span class="w">    </span><span class="n">engine</span><span class="o">-&gt;</span><span class="n">shutdown</span><span class="p">();</span>
 
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
@@ -477,23 +498,16 @@ title="Print to PDF"
 </div>
 </li>
 <li><p>In Visual Studio, select <code class="docutils literal notranslate"><span class="pre">Build</span> <span class="pre">|</span> <span class="pre">Configuration</span> <span class="pre">Manager</span></code> from the menu, then select the <code class="docutils literal notranslate"><span class="pre">x64</span></code> platform to the solution platforms.</p></li>
-<li><p>In Visual Studio, select <code class="docutils literal notranslate"><span class="pre">Project</span> <span class="pre">|</span> <span class="pre">simple-converter</span> <span class="pre">Properties</span></code> from the menu, then <code class="docutils literal notranslate"><span class="pre">C++</span> <span class="pre">|</span> <span class="pre">General</span></code>, then add <code class="docutils literal notranslate"><span class="pre">./avblocks/include</span></code> to <code class="docutils literal notranslate"><span class="pre">Additional</span> <span class="pre">Include</span> <span class="pre">Directories</span></code>.</p></li>
+<li><p>In Visual Studio, select <code class="docutils literal notranslate"><span class="pre">Project</span> <span class="pre">|</span> <span class="pre">enum-devices</span> <span class="pre">Properties</span></code> from the menu, then <code class="docutils literal notranslate"><span class="pre">C++</span> <span class="pre">|</span> <span class="pre">General</span></code>, then add <code class="docutils literal notranslate"><span class="pre">./primoburner/include</span></code> to <code class="docutils literal notranslate"><span class="pre">Additional</span> <span class="pre">Include</span> <span class="pre">Directories</span></code>.</p></li>
 <li><p>Build the project (Ctrl + Shift + B).</p></li>
-<li><p>Copy the file <code class="docutils literal notranslate"><span class="pre">AVBlocks64.dll</span></code> from <code class="docutils literal notranslate"><span class="pre">avblocks/lib/x64</span></code> to <code class="docutils literal notranslate"><span class="pre">x64/Debug</span></code>.</p></li>
-</ol>
-</section>
-<section id="run-the-application">
-<h2>Run the application<a class="headerlink" href="#run-the-application" title="Permalink to this headline">#</a></h2>
-<ol class="simple">
-<li><p>Download the <code class="docutils literal notranslate"><span class="pre">Wildlife.wmv</span></code> HD movie from the <a class="reference external" href="https://archive.org/download/WildlifeHd/Wildlife.wmv">Internet Archive</a> and save it in the Visual Studio solution directory (next to the  <code class="docutils literal notranslate"><span class="pre">simple-converter.sln</span></code> solution file).</p></li>
-<li><p>Run the application in Visual Studio. Wait a few seconds for the Transcoder to finish. The converted file <code class="docutils literal notranslate"><span class="pre">Wildlife.mp4</span></code> will be in the solution directory.</p></li>
+<li><p>Copy the file <code class="docutils literal notranslate"><span class="pre">PrimoBurner64.dll</span></code> from <code class="docutils literal notranslate"><span class="pre">primoburner/lib/x64</span></code> to <code class="docutils literal notranslate"><span class="pre">x64/Debug</span></code>.</p></li>
+<li><p>Run the application in Visual Studio. You should see a list of all CD / DVD / BD devices that are connected to the system.</p></li>
 </ol>
 </section>
 <section id="troubleshooting">
 <h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
-<li><p>You may get <code class="docutils literal notranslate"><span class="pre">The</span> <span class="pre">program</span> <span class="pre">can't</span> <span class="pre">start</span> <span class="pre">because</span> <span class="pre">AVBlocks64.dll</span> <span class="pre">is</span> <span class="pre">missing</span> <span class="pre">from</span> <span class="pre">your</span> <span class="pre">computer.</span> <span class="pre">Try</span> <span class="pre">reinstalling</span> <span class="pre">the</span> <span class="pre">program</span> <span class="pre">to</span> <span class="pre">fix</span> <span class="pre">this</span> <span class="pre">problem.</span></code> or a similar message. To fix that, copy the file <code class="docutils literal notranslate"><span class="pre">AVBlocks64.dll</span></code> from <code class="docutils literal notranslate"><span class="pre">avblocks/lib/x64</span></code> to <code class="docutils literal notranslate"><span class="pre">x64/Debug</span></code>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">transcoder-&gt;open()</span></code> may fail if there is already a file <code class="docutils literal notranslate"><span class="pre">Wildlife.mp4</span></code> in the project directory. Delete <code class="docutils literal notranslate"><span class="pre">Wildlife.mp4</span></code> to solve that.</p></li>
+<li><p>You may get <code class="docutils literal notranslate"><span class="pre">The</span> <span class="pre">program</span> <span class="pre">can't</span> <span class="pre">start</span> <span class="pre">because</span> <span class="pre">PrimoBurner64.dll</span> <span class="pre">is</span> <span class="pre">missing</span> <span class="pre">from</span> <span class="pre">your</span> <span class="pre">computer.</span> <span class="pre">Try</span> <span class="pre">reinstalling</span> <span class="pre">the</span> <span class="pre">program</span> <span class="pre">to</span> <span class="pre">fix</span> <span class="pre">this</span> <span class="pre">problem.</span></code> or a similar message. To fix that, copy the file <code class="docutils literal notranslate"><span class="pre">PrimoBurner64.dll</span></code> from <code class="docutils literal notranslate"><span class="pre">primoburner/lib/x64</span></code> to <code class="docutils literal notranslate"><span class="pre">x64/Debug</span></code>.</p></li>
 </ul>
 </section>
 </section>
@@ -511,7 +525,7 @@ title="Print to PDF"
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./primoburner-for-cpp/getting-started-windows"
+            path: "./primoburner-for-cpp\getting-started-windows"
         },
         predefinedOutput: true
     }
@@ -525,6 +539,20 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="../" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Getting Started - Windows</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../../setting-license-info/" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Setting License Info</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             </footer>
         </div>
