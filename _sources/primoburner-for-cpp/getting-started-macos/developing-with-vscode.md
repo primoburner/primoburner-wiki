@@ -1,20 +1,20 @@
 ---
 title: Developing with Visual Studio Code on macOS
 metadata:
-    description: This page describes the steps needed to setup Visual Studio Code for AVBlocks development on macOS
+    description: This page describes the steps needed to setup Visual Studio Code for PrimoBurner development on macOS
 taxonomy:
     category: docs
 ---
 
 # Developing with Visual Studio Code on macOS
 
-This topic describes the steps needed to setup Visual Studio Code for AVBlocks development on macOS. These steps have been verified to work with Xcode 15.0.1, on macOS Ventura 13.5.2.
+This topic describes the steps needed to setup Visual Studio Code for PrimoBurner development on macOS. These steps have been verified to work with Xcode 15.0.1, on macOS Ventura 13.5.2.
 
 ## Visual Studio Code
 
 Download and install from [Visual Studio Code](https://code.visualstudio.com/download) site.
 
-Open Visual Studio Code and press `Cmd + Shift + p`. Select `Shell Command: Install 'code' command in PATH`. 
+Open Visual Studio Code and press `Cmd + Shift + P`. Select `Shell Command: Install 'code' command in PATH`. 
 
 Also install the [C/C++ Extension Pack](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools-extension-pack).
 
@@ -59,7 +59,7 @@ Add the following Visual Studio Code specific files to the `.vscode` subdir:
             "request": "launch",
             "cwd": "${workspaceFolder}",
             "osx": {
-                "program": "${workspaceFolder}/build/debug/simple-converter",
+                "program": "${workspaceFolder}/build/debug/enum-devices",
                 "MIMode": "lldb",
             },
         }    
