@@ -1,14 +1,14 @@
 ---
 title: Developing with Visual Studio Code on Windows
 metadata:
-    description: This page describes the steps needed to setup Visual Studio Code for AVBlocks development on Windows
+    description: This page describes the steps needed to setup Visual Studio Code for PrimoBurner development on Windows
 taxonomy:
     category: docs
 ---
 
 # Developing with Visual Studio Code on Windows
 
-This topic describes the steps needed to setup Visual Studio Code for AVBlocks development on Windows. These steps have been verified to work on on Windows 11 (22H2).
+This topic describes the steps needed to setup Visual Studio Code for PrimoBurner development on Windows. These steps have been verified to work on on Windows 11 (22H2).
 
 ## Visual Studio Code
 
@@ -57,7 +57,7 @@ Add the following Visual Studio Code specific files to the `.vscode` subdir:
             "cwd": "${workspaceFolder}",
             "windows": {
                 "type": "cppvsdbg",
-                "program": "${workspaceFolder}/build/debug/simple-converter.exe"
+                "program": "${workspaceFolder}/build/debug/enum-devices.exe"
             },
             "preLaunchTask": "Build"
         }        
@@ -71,4 +71,4 @@ Test the build by pressing `Ctrl + Shift + B`. Visual Studio Code should execute
 
 ## Test the debugging
 
-Set a breakpoint on the first line of `int main(int argc, const char *argv[])` inside `src/main.cpp`. Press `F5` to launch the debugger. It should stop at the breakpoint.
+Set a breakpoint on the first line of `int main()` inside `src/main.cpp`. Press `F5` to launch the debugger. It should stop at the breakpoint.

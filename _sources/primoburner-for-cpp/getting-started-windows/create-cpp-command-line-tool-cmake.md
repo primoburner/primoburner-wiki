@@ -1,7 +1,7 @@
 ---
 title: Create a Command Line Tool using CMake on Windows
 metadata:
-    description: This page describes the steps needed to configure CMake project for AVBlocks Command Line Tool on Windows
+    description: This page describes the steps needed to configure CMake project for PrimoBurner Command Line Tool on Windows
 taxonomy:
     category: docs
 ---
@@ -29,7 +29,7 @@ If you don't have those tools follow the steps in the [Setup C++ development env
 ## Create the project directory
 
 ```powershell
-mkdir ~/avblocks/cmake/simple-converter
+mkdir ~/primoburner/cmake/enum-devices
 ```
 
 ## Create the CMake project 
@@ -37,7 +37,7 @@ mkdir ~/avblocks/cmake/simple-converter
 Switch to the project directory:
 
 ```powershell
-cd ~/avblocks/cmake/simple-converter
+cd ~/primoburner/cmake/enum-devices
 ```
 
 Add `src/main.cpp`:
@@ -46,7 +46,7 @@ Add `src/main.cpp`:
 #include <iostream>
 
 int main() {
-  std::cout << "Hello AVBlocks!\n";
+  std::cout << "Hello PrimoBurner!\n";
 }
 ```
 
@@ -55,9 +55,9 @@ Add `CMakeLists.txt`:
 ```cmake
 cmake_minimum_required(VERSION 3.20)
 
-project(simple-converter)
+project(enum-devices)
 
-add_executable(simple-converter src/main.cpp)
+add_executable(enum-devices src/main.cpp)
 ```
 
 Add `.gitignore`:
@@ -102,7 +102,7 @@ Remove-Item $tempFile
 You should end up with the following directory structure:
 
 ```sh
-simple-converter
+enum-devices
 ├── .gitignore
 ├── CMakeLists.txt
 ├── build.ps1
@@ -121,19 +121,19 @@ simple-converter
 ./build.ps1
 ```
 
-## Update for AVBlocks
+## Update for PrimoBurner
 
-1. [Download](https://github.com/avblocks/avblocks-core/releases/) the 64 bit version of AVBlocks for C++ (Windows). The file you need will have a name similar to `avblocks_v3.0.0-demo.1-windows.zip` except for the version number which may be different. 
+1. [Download](https://github.com/primoburner/primoburner-core/releases/) the 64 bit version of PrimoBurner for C++ (Windows). The file you need will have a name similar to `primoburner-v5.0.1-demo.1-windows.zip` except for the version number which may be different. 
 
-2. Extract the archive in a location of your choice, then copy the `include` and `lib` directories to the `avblocks` subdirectory of the CMake project directory. The CMake project directory is the directory that contains the `CMakeLists.txt` file.
+2. Extract the archive in a location of your choice, then copy the `include` and `lib` directories to the `primoburner` subdirectory of the CMake project directory. The CMake project directory is the directory that contains the `CMakeLists.txt` file.
 
     You should end up with a directory structure similar to the following:
 
     ```sh
-    simple-converter
+    enum-devices
     ├── .gitignore
     ├── CMakeLists.txt
-    ├── avblocks
+    ├── primoburner
     │   ├── include
     │   └── lib
     ├── build.ps1
@@ -147,7 +147,7 @@ simple-converter
     ```
     .cache/
     build/
-    avblocks/
+    primoburner/
     ```
 
 3. Replace the contents of `CMakeLists.txt` with this code:
@@ -155,8 +155,8 @@ simple-converter
     ```cpp
     cmake_minimum_required(VERSION 3.16)
 
-    project(simple-converter)
-    set (target simple-converter)
+    project(enum-devices)
+    set (target enum-devices)
 
     add_executable(${target})
 
@@ -170,11 +170,11 @@ simple-converter
     target_compile_features(${target} PRIVATE cxx_std_17)
 
     # include dirs
-    target_include_directories(${target} PRIVATE avblocks/include)
+    target_include_directories(${target} PRIVATE primoburner/include)
 
     # libs
-    target_link_directories(${target} PRIVATE avblocks/lib/x64)
-    target_link_libraries(${target} AVBlocks64.dll)
+    target_link_directories(${target} PRIVATE primoburner/lib/x64)
+    target_link_libraries(${target} PrimoBurner64.dll)
 
     # add /MTd or /MT compiler option 
     set_property(TARGET ${target} PROPERTY MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
@@ -187,39 +187,48 @@ simple-converter
 4. Replace the contents of `src/main.cpp` with this code:
 
     ```cpp
-    #include <primo/avblocks/avb.h>
+    // Including SDKDDKVer.h defines the highest available Windows platform.
+
+    // If you wish to build your application for a previous Windows platform, include WinSDKVer.h and
+    // set the _WIN32_WINNT macro to the platform you wish to support before including SDKDDKVer.h.
+
+    #include <SDKDDKVer.h>
+
+    #include <iostream>
+
+    #include <primo/burner/pb.h>
     #include <primo/platform/reference++.h>
 
-    using namespace primo::codecs;
-    using namespace primo::avblocks;
+    namespace p = primo;
+    namespace pb = primo::burner;
 
-    int main(int argc, const char * argv[]) {
-        // needed for WMV
-        CoInitializeEx(nullptr, COINITBASE_MULTITHREADED);
+    int main()
+    {
+        // Create engine
+        auto engine = p::make_ref(pb::Library::createEngine());
 
-        Library::initialize();
+        // Initialize engine
+        engine->initialize();
 
-        auto inputInfo = primo::make_ref(Library::createMediaInfo());
-        inputInfo->inputs()->at(0)->setFile(L"Wildlife.wmv");
+        // create device enumerator
+        auto enumerator = p::make_ref(engine->createDeviceEnumerator());
 
-        if (inputInfo->open()) {
-            auto inputSocket = primo::make_ref(Library::createMediaSocket(inputInfo.get()));
-            auto outputSocket = primo::make_ref(Library::createMediaSocket(Preset::Video::Generic::MP4::Base_H264_AAC));
-            outputSocket->setFile(L"Wildlife.mp4");
+        for (int i = 0; i < enumerator->count(); i++) {
+            // create a device; do not ask for exclusive access
+            auto device = p::make_ref(enumerator->createDevice(i, false));
+            
+            if (device) {
+                using namespace std;
 
-            auto transcoder = primo::make_ref(Library::createTranscoder());
-            transcoder->inputs()->add(inputSocket.get());
-            transcoder->outputs()->add(outputSocket.get());
+                wcout << "Device       : " << i  << endl;
+                wcout << "Description  : " << device->description() << endl;
 
-            if (transcoder->open()) {
-                transcoder->run();
-                transcoder->close();
+                wcout << endl;
             }
         }
 
-        Library::shutdown();
-
-        CoUninitialize();
+        // terminate engine
+        engine->shutdown();
 
         return 0;
     }
@@ -233,20 +242,12 @@ simple-converter
     ```
 ## Run the application
 
-1. Download the `Wildlife.wmv` HD movie from the [Internet Archive](https://archive.org/download/WildlifeHd/Wildlife.wmv) and save it in the project directory.
+```powershell
+./build/debug/enum-devices
+```
 
-2. Copy the file `AVBlocks64.dll` from `avblocks/lib/x64` to `build/debug`. 
+You should see a list of all CD / DVD / BD devices that are connected to the system.
 
-3. Run the application:
-
-    ```powershell
-    ./build/debug/simple-converter
-    ```
-    
-    Wait for the Transcoder to finish - it will take a few seconds. The converted file `Wildlife.mp4` will be in the project directory.
-	
 ## Troubleshooting
 
-* You may get `The program can't start because AVBlocks64.dll is missing from your computer. Try reinstalling the program to fix this problem.` or a similar message. To fix that, copy the file `AVBlocks64.dll` from `avblocks/lib/x64` to `build/debug`.
-
-* `transcoder->open()` may fail if there is already a file `Wildlife.mp4` in the project directory. Delete `Wildlife.mp4` to solve that.         
+* You may get `The program can't start because PrimoBurner64.dll is missing from your computer. Try reinstalling the program to fix this problem.` or a similar message. To fix that, copy the file `PrimoBurner64.dll` from `primoburner/lib/x64` to `build/debug`.

@@ -94,7 +94,9 @@ This topic describes the steps needed to configure a C++ Console App in Visual S
 
 8. Copy the file `PrimoBurner64.dll` from `primoburner/lib/x64` to `x64/Debug`. 
 
-9. Run the application in Visual Studio. You should see a list of all CD / DVD / BD devices that are connected to the system.
+## Run the application
+
+Run the application in Visual Studio. You should see a list of all CD / DVD / BD devices that are connected to the system.
 
 ## Troubleshooting
 

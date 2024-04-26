@@ -54,6 +54,8 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../../../genindex/" />
     <link rel="search" title="Search" href="../../../search/" />
+    <link rel="next" title="Setting License Info" href="../../setting-license-info/" />
+    <link rel="prev" title="Create a Command Line Tool using CMake on Windows" href="../create-cpp-command-line-tool-cmake/" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -118,7 +120,7 @@ const thebe_selector_output = ".output, .cell_output"
   Getting Started
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../../getting-started-linux/">
    Getting Started - Linux
@@ -168,19 +170,29 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
+ <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="../">
    Getting Started - Windows
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
   <label for="toctree-checkbox-3">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
+  <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="../create-a-c-plus-console-app-in-visual-studio/">
      Create a Console App in Visual Studio on Windows
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../create-cpp-command-line-tool-cmake/">
+     Create a Command Line Tool using CMake on Windows
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Developing with Visual Studio Code on Windows
     </a>
    </li>
   </ul>
@@ -492,7 +504,7 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="developing-with-visual-studio-code-on-windows">
 <h1>Developing with Visual Studio Code on Windows<a class="headerlink" href="#developing-with-visual-studio-code-on-windows" title="Permalink to this headline">#</a></h1>
-<p>This topic describes the steps needed to setup Visual Studio Code for AVBlocks development on Windows. These steps have been verified to work on on Windows 11 (22H2).</p>
+<p>This topic describes the steps needed to setup Visual Studio Code for PrimoBurner development on Windows. These steps have been verified to work on on Windows 11 (22H2).</p>
 <section id="visual-studio-code">
 <h2>Visual Studio Code<a class="headerlink" href="#visual-studio-code" title="Permalink to this headline">#</a></h2>
 <p>Download and install from <a class="reference external" href="https://code.visualstudio.com/download">Visual Studio Code</a> site.</p>
@@ -536,7 +548,7 @@ title="Print to PDF"
 <span class="w">            </span><span class="nt">&quot;cwd&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;${workspaceFolder}&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="nt">&quot;windows&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">                </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cppvsdbg&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;program&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;${workspaceFolder}/build/debug/simple-converter.exe&quot;</span>
+<span class="w">                </span><span class="nt">&quot;program&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;${workspaceFolder}/build/debug/enum-devices.exe&quot;</span>
 <span class="w">            </span><span class="p">},</span>
 <span class="w">            </span><span class="nt">&quot;preLaunchTask&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Build&quot;</span>
 <span class="w">        </span><span class="p">}</span><span class="w">        </span>
@@ -552,7 +564,7 @@ title="Print to PDF"
 </section>
 <section id="test-the-debugging">
 <h2>Test the debugging<a class="headerlink" href="#test-the-debugging" title="Permalink to this headline">#</a></h2>
-<p>Set a breakpoint on the first line of <code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">main(int</span> <span class="pre">argc,</span> <span class="pre">const</span> <span class="pre">char</span> <span class="pre">*argv[])</span></code> inside <code class="docutils literal notranslate"><span class="pre">src/main.cpp</span></code>. Press <code class="docutils literal notranslate"><span class="pre">F5</span></code> to launch the debugger. It should stop at the breakpoint.</p>
+<p>Set a breakpoint on the first line of <code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">main()</span></code> inside <code class="docutils literal notranslate"><span class="pre">src/main.cpp</span></code>. Press <code class="docutils literal notranslate"><span class="pre">F5</span></code> to launch the debugger. It should stop at the breakpoint.</p>
 </section>
 </section>
 
@@ -583,6 +595,20 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="../create-cpp-command-line-tool-cmake/" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Create a Command Line Tool using CMake on Windows</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../../setting-license-info/" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Setting License Info</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             </footer>
         </div>
