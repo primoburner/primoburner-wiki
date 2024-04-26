@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Create a Console App in Visual Studio on Windows &#8212; PrimoBurner for C++</title>
+    <title>Enumerate Devices &#8212; PrimoBurner for C++</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -50,12 +50,12 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../../_static/sphinx-thebe.js"></script>
-    <link rel="canonical" href="https://wiki.primoburner.com/primoburner-for-cpp/getting-started-windows/create-a-c-plus-console-app-in-visual-studio.html" />
+    <link rel="canonical" href="https://wiki.primoburner.com/primoburner-for-cpp/using-engine/enumerate-devices.html" />
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../../../genindex/" />
     <link rel="search" title="Search" href="../../../search/" />
-    <link rel="next" title="Create a Command Line Tool using CMake on Windows" href="../create-cpp-command-line-tool-cmake/" />
-    <link rel="prev" title="Getting Started - Windows" href="../" />
+    <link rel="next" title="About PrimoBurner for C++" href="../../../about-primoburner/about-primoburner-for-c/" />
+    <link rel="prev" title="Engine" href="../" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -120,7 +120,7 @@ const thebe_selector_output = ".output, .cell_output"
   Getting Started
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../../getting-started-linux/">
    Getting Started - Linux
@@ -170,28 +170,28 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="../">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../getting-started-windows/">
    Getting Started - Windows
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
   <label for="toctree-checkbox-3">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul class="current">
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../getting-started-windows/create-a-c-plus-console-app-in-visual-studio/">
      Create a Console App in Visual Studio on Windows
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../create-cpp-command-line-tool-cmake/">
+    <a class="reference internal" href="../../getting-started-windows/create-cpp-command-line-tool-cmake/">
      Create a Command Line Tool using CMake on Windows
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../developing-with-vscode/">
+    <a class="reference internal" href="../../getting-started-windows/developing-with-vscode/">
      Developing with Visual Studio Code on Windows
     </a>
    </li>
@@ -213,19 +213,19 @@ const thebe_selector_output = ".output, .cell_output"
   Components
  </span>
 </p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../using-engine/">
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../">
    Engine
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
   <label for="toctree-checkbox-4">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../using-engine/enumerate-devices/">
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      Enumerate Devices
     </a>
    </li>
@@ -353,7 +353,7 @@ title="Fullscreen mode"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../../../_sources/primoburner-for-cpp/getting-started-windows/create-a-c-plus-console-app-in-visual-studio.md"
+        <a href="../../../_sources/primoburner-for-cpp/using-engine/enumerate-devices.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -413,18 +413,8 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#create-the-visual-studio-project">
-   Create the Visual Studio project
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#run-the-application">
-   Run the application
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#troubleshooting">
-   Troubleshooting
+  <a class="reference internal nav-link" href="#complete-c-code">
+   Complete C++ code
   </a>
  </li>
 </ul>
@@ -436,7 +426,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Create a Console App in Visual Studio on Windows</h1>
+                <h1>Enumerate Devices</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -447,18 +437,8 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#create-the-visual-studio-project">
-   Create the Visual Studio project
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#run-the-application">
-   Run the application
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#troubleshooting">
-   Troubleshooting
+  <a class="reference internal nav-link" href="#complete-c-code">
+   Complete C++ code
   </a>
  </li>
 </ul>
@@ -471,56 +451,41 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="create-a-console-app-in-visual-studio-on-windows">
-<h1>Create a Console App in Visual Studio on Windows<a class="headerlink" href="#create-a-console-app-in-visual-studio-on-windows" title="Permalink to this headline">#</a></h1>
-<p>This topic describes the steps needed to configure a C++ Console App in Visual Studio. These steps have been verified to work with Visual Studio 2022 Community Edition, on Windows 11 (22H2).</p>
-<section id="create-the-visual-studio-project">
-<h2>Create the Visual Studio project<a class="headerlink" href="#create-the-visual-studio-project" title="Permalink to this headline">#</a></h2>
-<ol>
-<li><p>Create a C++, Console App in Visual Studio. Name the project <code class="docutils literal notranslate"><span class="pre">enum-devices</span></code>. Check <code class="docutils literal notranslate"><span class="pre">Place</span> <span class="pre">solution</span> <span class="pre">and</span> <span class="pre">project</span> <span class="pre">in</span> <span class="pre">the</span> <span class="pre">same</span> <span class="pre">directory</span></code>.</p></li>
-<li><p><a class="reference external" href="https://github.com/primoburner/primoburner-core/releases/">Download</a> the 64 bit version of PrimoBurner for C++ (Windows). The file you need will have a name similar to <code class="docutils literal notranslate"><span class="pre">primoburner-v5.0.1-demo.1-windows.zip</span></code> - the version number may differ.</p></li>
-<li><p>Extract the ZIP archive in a location of your choice, then copy the <code class="docutils literal notranslate"><span class="pre">include</span></code> and <code class="docutils literal notranslate"><span class="pre">lib</span></code> directories to the <code class="docutils literal notranslate"><span class="pre">primoburner</span></code> subdirectory of the Visual Studio solution directory. The Visual Studio solution is the directory that contains the <code class="docutils literal notranslate"><span class="pre">enum-devices.sln</span></code> solution file.</p>
-<p>You should end up with a directory structure similar to the following:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>enum-devices
-├───primoburner
-│   ├───include
-│   └───lib
-├───enum-devices.cpp
-├───enum-devices.sln
-└───enum-devices.vcxproj
-</pre></div>
-</div>
-</li>
-<li><p>Replace the contents of <code class="docutils literal notranslate"><span class="pre">enum-devices.cpp</span></code> with this code:</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// enum-devices.cpp : This file contains the &#39;main&#39; function. Program execution begins and ends there.</span>
-<span class="c1">//</span>
-
-<span class="c1">// Including SDKDDKVer.h defines the highest available Windows platform.</span>
-
-<span class="c1">// If you wish to build your application for a previous Windows platform, include WinSDKVer.h and</span>
-<span class="c1">// set the _WIN32_WINNT macro to the platform you wish to support before including SDKDDKVer.h.</span>
-
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;SDKDDKVer.h&gt;</span>
+  <section class="tex2jax_ignore mathjax_ignore" id="enumerate-devices">
+<h1>Enumerate Devices<a class="headerlink" href="#enumerate-devices" title="Permalink to this headline">#</a></h1>
+<p>Enumerate the optical devices connected to your system.</p>
+<p>To enumerate the available devices:</p>
+<ol class="simple">
+<li><p>Obtain a <a class="reference external" href="https://doc.primoburner.com/core/latest/classprimo_1_1burner_1_1_device_enum.html ">DeviceEnum </a> object by calling the <a class="reference external" href="https://doc.primoburner.com/core/latest/classprimo_1_1burner_1_1_engine.html ">Engine::createDeviceEnumerator </a> method.</p></li>
+<li><p>Use the <code class="docutils literal notranslate"><span class="pre">DeviceEnum::createDevice</span></code> method to create a <a class="reference external" href="https://doc.primoburner.com/core/latest/classprimo_1_1burner_1_1_device.html ">Device </a> object.</p></li>
+<li><p>Display the <code class="docutils literal notranslate"><span class="pre">Device::driveLetter</span></code> and the <code class="docutils literal notranslate"><span class="pre">Device::description</span></code> properties.</p></li>
+</ol>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;primo/burner/pb.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;primo/platform/ustring.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;primo/platform/reference++.h&gt;</span>
 
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
-
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;primo/burner/pb.h&gt;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;primo/platform/reference++.h&gt;</span>
 
 <span class="k">namespace</span><span class="w"> </span><span class="nn">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nn">primo</span><span class="p">;</span>
 <span class="k">namespace</span><span class="w"> </span><span class="nn">pb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nn">primo</span><span class="o">::</span><span class="nn">burner</span><span class="p">;</span>
 
-<span class="c1">// link with PrimoBurner64.lib</span>
-<span class="cp">#pragma comment(lib, &quot;./primoburner/lib/x64/PrimoBurner64.lib&quot;)</span>
-
-<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">print_device</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">index</span><span class="p">,</span><span class="w"> </span><span class="n">pb</span><span class="o">::</span><span class="n">Device</span><span class="o">*</span><span class="w"> </span><span class="n">device</span><span class="p">)</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="c1">// Create engine</span>
-<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">engine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="o">::</span><span class="n">make_ref</span><span class="p">(</span><span class="n">pb</span><span class="o">::</span><span class="n">Library</span><span class="o">::</span><span class="n">createEngine</span><span class="p">());</span>
+<span class="w">    </span><span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="p">;</span>
 
-<span class="w">    </span><span class="c1">// Initialize engine</span>
-<span class="w">    </span><span class="n">engine</span><span class="o">-&gt;</span><span class="n">initialize</span><span class="p">();</span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="o">::</span><span class="n">ustring</span><span class="p">(</span><span class="n">device</span><span class="o">-&gt;</span><span class="n">description</span><span class="p">());</span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">systemPath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="o">::</span><span class="n">ustring</span><span class="p">(</span><span class="n">device</span><span class="o">-&gt;</span><span class="n">systemPath</span><span class="p">());</span>
 
+<span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Device : &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">index</span><span class="w">  </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+<span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;  Description  : &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">description</span><span class="p">.</span><span class="n">str</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+<span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;  Drive Letter : &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">device</span><span class="o">-&gt;</span><span class="n">driveLetter</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+<span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;  System Path  : &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">systemPath</span><span class="p">.</span><span class="n">str</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="n">enumerate_devices</span><span class="p">(</span><span class="n">pb</span><span class="o">::</span><span class="n">Engine</span><span class="o">*</span><span class="w"> </span><span class="n">engine</span><span class="p">)</span>
+<span class="p">{</span>
 <span class="w">    </span><span class="c1">// create device enumerator</span>
 <span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">enumerator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="o">::</span><span class="n">make_ref</span><span class="p">(</span><span class="n">engine</span><span class="o">-&gt;</span><span class="n">createDeviceEnumerator</span><span class="p">());</span>
 
@@ -529,38 +494,82 @@ title="Print to PDF"
 <span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">device</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="o">::</span><span class="n">make_ref</span><span class="p">(</span><span class="n">enumerator</span><span class="o">-&gt;</span><span class="n">createDevice</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">));</span>
 <span class="w">        </span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">device</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="p">;</span>
-
-<span class="w">            </span><span class="n">wcout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Device       : &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">i</span><span class="w">  </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
-<span class="w">            </span><span class="n">wcout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Description  : &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">device</span><span class="o">-&gt;</span><span class="n">description</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
-
-<span class="w">            </span><span class="n">wcout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+<span class="w">            </span><span class="n">print_device</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">device</span><span class="p">.</span><span class="n">get</span><span class="p">());</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<section id="complete-c-code">
+<h2>Complete C++ code<a class="headerlink" href="#complete-c-code" title="Permalink to this headline">#</a></h2>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;primo/burner/pb.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;primo/platform/ustring.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;primo/platform/reference++.h&gt;</span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+
+<span class="k">namespace</span><span class="w"> </span><span class="nn">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nn">primo</span><span class="p">;</span>
+<span class="k">namespace</span><span class="w"> </span><span class="nn">pb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nn">primo</span><span class="o">::</span><span class="nn">burner</span><span class="p">;</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">print_device</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">index</span><span class="p">,</span><span class="w"> </span><span class="n">pb</span><span class="o">::</span><span class="n">Device</span><span class="o">*</span><span class="w"> </span><span class="n">device</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="o">::</span><span class="n">ustring</span><span class="p">(</span><span class="n">device</span><span class="o">-&gt;</span><span class="n">description</span><span class="p">());</span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">systemPath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="o">::</span><span class="n">ustring</span><span class="p">(</span><span class="n">device</span><span class="o">-&gt;</span><span class="n">systemPath</span><span class="p">());</span>
+
+<span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Device : &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">index</span><span class="w">  </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+<span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;  Description  : &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">description</span><span class="p">.</span><span class="n">str</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+<span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;  Drive Letter : &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">device</span><span class="o">-&gt;</span><span class="n">driveLetter</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+<span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;  System Path  : &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">systemPath</span><span class="p">.</span><span class="n">str</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="n">enumerate_devices</span><span class="p">(</span><span class="n">pb</span><span class="o">::</span><span class="n">Engine</span><span class="o">*</span><span class="w"> </span><span class="n">engine</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">// create device enumerator</span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">enumerator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="o">::</span><span class="n">make_ref</span><span class="p">(</span><span class="n">engine</span><span class="o">-&gt;</span><span class="n">createDeviceEnumerator</span><span class="p">());</span>
+
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">enumerator</span><span class="o">-&gt;</span><span class="n">count</span><span class="p">();</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// create a device; do not ask for exclusive access</span>
+<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">device</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="o">::</span><span class="n">make_ref</span><span class="p">(</span><span class="n">enumerator</span><span class="o">-&gt;</span><span class="n">createDevice</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">));</span>
+<span class="w">        </span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">device</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">print_device</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">device</span><span class="p">.</span><span class="n">get</span><span class="p">());</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="n">enumerate_devices</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">// Create engine</span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">engine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="o">::</span><span class="n">make_ref</span><span class="p">(</span><span class="n">pb</span><span class="o">::</span><span class="n">Library</span><span class="o">::</span><span class="n">createEngine</span><span class="p">());</span>
+
+<span class="w">    </span><span class="c1">// Initialize engine</span>
+<span class="w">    </span><span class="n">engine</span><span class="o">-&gt;</span><span class="n">initialize</span><span class="p">();</span>
+
+<span class="w">    </span><span class="n">enumerate_devices</span><span class="p">(</span><span class="n">engine</span><span class="p">.</span><span class="n">get</span><span class="p">());</span>
 
 <span class="w">    </span><span class="c1">// terminate engine</span>
 <span class="w">    </span><span class="n">engine</span><span class="o">-&gt;</span><span class="n">shutdown</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="n">main</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">// Set license. To run PrimoBurner in demo mode, comment the next line out</span>
+<span class="w">    </span><span class="n">pb</span><span class="o">::</span><span class="n">Library</span><span class="o">::</span><span class="n">setLicense</span><span class="p">(</span><span class="s">&quot;license-xml-string&quot;</span><span class="p">);</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="n">pb</span><span class="o">::</span><span class="n">Library</span><span class="o">::</span><span class="n">enableTraceLog</span><span class="p">();</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="n">enumerate_devices</span><span class="p">();</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="n">pb</span><span class="o">::</span><span class="n">Library</span><span class="o">::</span><span class="n">disableTraceLog</span><span class="p">();</span>
 
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
-</li>
-<li><p>In Visual Studio, select <code class="docutils literal notranslate"><span class="pre">Build</span> <span class="pre">|</span> <span class="pre">Configuration</span> <span class="pre">Manager</span></code> from the menu, then select the <code class="docutils literal notranslate"><span class="pre">x64</span></code> platform to the solution platforms.</p></li>
-<li><p>In Visual Studio, select <code class="docutils literal notranslate"><span class="pre">Project</span> <span class="pre">|</span> <span class="pre">enum-devices</span> <span class="pre">Properties</span></code> from the menu, then <code class="docutils literal notranslate"><span class="pre">C++</span> <span class="pre">|</span> <span class="pre">General</span></code>, then add <code class="docutils literal notranslate"><span class="pre">./primoburner/include</span></code> to <code class="docutils literal notranslate"><span class="pre">Additional</span> <span class="pre">Include</span> <span class="pre">Directories</span></code>.</p></li>
-<li><p>Build the project (Ctrl + Shift + B).</p></li>
-<li><p>Copy the file <code class="docutils literal notranslate"><span class="pre">PrimoBurner64.dll</span></code> from <code class="docutils literal notranslate"><span class="pre">primoburner/lib/x64</span></code> to <code class="docutils literal notranslate"><span class="pre">x64/Debug</span></code>.</p></li>
-</ol>
-</section>
-<section id="run-the-application">
-<h2>Run the application<a class="headerlink" href="#run-the-application" title="Permalink to this headline">#</a></h2>
-<p>Run the application in Visual Studio. You should see a list of all CD / DVD / BD devices that are connected to the system.</p>
-</section>
-<section id="troubleshooting">
-<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline">#</a></h2>
-<ul class="simple">
-<li><p>You may get <code class="docutils literal notranslate"><span class="pre">The</span> <span class="pre">program</span> <span class="pre">can't</span> <span class="pre">start</span> <span class="pre">because</span> <span class="pre">PrimoBurner64.dll</span> <span class="pre">is</span> <span class="pre">missing</span> <span class="pre">from</span> <span class="pre">your</span> <span class="pre">computer.</span> <span class="pre">Try</span> <span class="pre">reinstalling</span> <span class="pre">the</span> <span class="pre">program</span> <span class="pre">to</span> <span class="pre">fix</span> <span class="pre">this</span> <span class="pre">problem.</span></code> or a similar message. To fix that, copy the file <code class="docutils literal notranslate"><span class="pre">PrimoBurner64.dll</span></code> from <code class="docutils literal notranslate"><span class="pre">primoburner/lib/x64</span></code> to <code class="docutils literal notranslate"><span class="pre">x64/Debug</span></code>.</p></li>
-</ul>
 </section>
 </section>
 
@@ -577,7 +586,7 @@ title="Print to PDF"
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./primoburner-for-cpp/getting-started-windows"
+            path: "./primoburner-for-cpp/using-engine"
         },
         predefinedOutput: true
     }
@@ -595,13 +604,13 @@ title="Print to PDF"
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Getting Started - Windows</p>
+            <p class="prev-next-title">Engine</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../create-cpp-command-line-tool-cmake/" title="next page">
+    <a class='right-next' id="next-link" href="../../../about-primoburner/about-primoburner-for-c/" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Create a Command Line Tool using CMake on Windows</p>
+        <p class="prev-next-title">About PrimoBurner for C++</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

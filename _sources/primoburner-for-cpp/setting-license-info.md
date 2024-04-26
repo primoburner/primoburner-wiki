@@ -3,7 +3,7 @@ title: Setting License Info
 metadata:
     description: This topic describes how to use an PrimoBurner license file.
 taxonomy:
-    category: docs
+    category: [docs]
 ---
 
 # Setting License Info
