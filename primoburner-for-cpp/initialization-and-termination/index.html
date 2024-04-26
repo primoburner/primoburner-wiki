@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Getting Started - Linux &#8212; PrimoBurner for C++</title>
+    <title>Initialization and Termination &#8212; PrimoBurner for C++</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -50,12 +50,12 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
-    <link rel="canonical" href="https://wiki.primoburner.com/primoburner-for-cpp/getting-started-linux.html" />
+    <link rel="canonical" href="https://wiki.primoburner.com/primoburner-for-cpp/initialization-and-termination.html" />
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../../genindex/" />
     <link rel="search" title="Search" href="../../search/" />
-    <link rel="next" title="Create a Command Line Tool using CMake on Ubuntu" href="create-cpp-command-line-tool-cmake/" />
-    <link rel="prev" title="Welcome" href="../../" />
+    <link rel="next" title="Setting License Info" href="../setting-license-info/" />
+    <link rel="prev" title="Developing with Visual Studio Code on Windows" href="../getting-started-windows/developing-with-vscode/" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -121,23 +121,23 @@ const thebe_selector_output = ".output, .cell_output"
  </span>
 </p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active has-children">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../getting-started-linux/">
    Getting Started - Linux
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="create-cpp-command-line-tool-cmake/">
+    <a class="reference internal" href="../getting-started-linux/create-cpp-command-line-tool-cmake/">
      Create a Command Line Tool using CMake on Ubuntu
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="developing-with-vscode/">
+    <a class="reference internal" href="../getting-started-linux/developing-with-vscode/">
      Developing with Visual Studio Code on Ubuntu
     </a>
    </li>
@@ -197,8 +197,8 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../initialization-and-termination/">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Initialization and Termination
   </a>
  </li>
@@ -329,7 +329,7 @@ title="Fullscreen mode"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../../_sources/primoburner-for-cpp/getting-started-linux.md"
+        <a href="../../_sources/primoburner-for-cpp/initialization-and-termination.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -378,7 +378,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Getting Started - Linux</h1>
+                <h1>Initialization and Termination</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -390,10 +390,33 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="getting-started-linux">
-<h1>Getting Started - Linux<a class="headerlink" href="#getting-started-linux" title="Permalink to this headline">#</a></h1>
-<p>Steps to configure your environment for PrimoBurner development on Linux.</p>
-<div class="toctree-wrapper compound">
+  <section class="tex2jax_ignore mathjax_ignore" id="initialization-and-termination">
+<h1>Initialization and Termination<a class="headerlink" href="#initialization-and-termination" title="Permalink to this headline">#</a></h1>
+<p>You must initialize the PrimoBurner API when your application starts and terminate it before your application ends. The PrimoBurner license can be set right after the initialization. If you do not set a license, PrimoBurner will work in demo mode.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;primo/burner/pb.h&gt;</span>
+
+<span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">primo</span><span class="o">::</span><span class="nn">burner</span><span class="p">;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Library</span><span class="o">::</span><span class="n">setLicense</span><span class="p">(</span><span class="s">&quot;license-xml-string&quot;</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// optionally enable trace logging</span>
+<span class="w">    </span><span class="c1">// this will create a file named PrimoBurner.log in user&#39;s home directory</span>
+<span class="w">    </span><span class="n">Library</span><span class="o">::</span><span class="n">enableTraceLog</span><span class="p">(</span><span class="k">nullptr</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">Engine</span><span class="w"> </span><span class="o">*</span><span class="n">engine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Library</span><span class="o">::</span><span class="n">createEngine</span><span class="p">();</span>
+<span class="w">    </span><span class="n">engine</span><span class="o">-&gt;</span><span class="n">initialize</span><span class="p">();</span>
+
+<span class="w">     </span><span class="c1">// Code that uses PrimoBurner goes here</span>
+
+<span class="w">    </span><span class="n">engine</span><span class="o">-&gt;</span><span class="n">shutdown</span><span class="p">();</span>
+
+<span class="w">    </span><span class="c1">// optionally disable trace logging</span>
+<span class="w">    </span><span class="n">Library</span><span class="o">::</span><span class="n">disableTraceLog</span><span class="p">();</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w">    </span>
+<span class="p">}</span>
+</pre></div>
 </div>
 </section>
 
@@ -424,17 +447,17 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="../../" title="previous page">
+    <a class='left-prev' id="prev-link" href="../getting-started-windows/developing-with-vscode/" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Welcome</p>
+            <p class="prev-next-title">Developing with Visual Studio Code on Windows</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="create-cpp-command-line-tool-cmake/" title="next page">
+    <a class='right-next' id="next-link" href="../setting-license-info/" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Create a Command Line Tool using CMake on Ubuntu</p>
+        <p class="prev-next-title">Setting License Info</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
