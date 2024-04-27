@@ -21,6 +21,7 @@ Start by creating the main function:
 #include <primo/platform/reference++.h>
 
 #include <iostream>
+#include <iomanip>
 
 namespace p = primo;
 namespace pb = primo::burner;
@@ -96,7 +97,23 @@ void read_media_info(pb::Device* device)
     auto media_profile = device->mediaProfile();
 
     cout << "  (" << device->driveLetter() << ":) - " << description.str() << endl;
+    cout << "  --- Media Info ---" << endl;
     cout << "  Media Profile : " << media_profile_string(device, media_profile) << endl;
+    cout << "  Blank         : " << (device->isMediaBlank() ? "yes" : "no") << endl;
+    
+    auto media_info = device->readMediaInfo();
+    if (media_info) {
+        
+        if (device->isMediaBD()) {
+            print_bd_info(media_info);
+        } 
+        
+        if (device->isMediaDVD()) {
+            print_dvd_info(media_info);
+        }
+
+        media_info->release();
+    }
 
     cout << endl;
 }
@@ -104,6 +121,90 @@ void read_media_info(pb::Device* device)
 
 For the `media_profile_string` function definition see [C++ Utility Classes and Functions](/primoburner-for-cpp/c-utility-classes-and-functions)
 
+
+## Print BD Info
+
+```cpp
+void print_bd_info(pb::MediaInfo* media_info)
+{
+    using namespace std;
+
+    auto bd_info = media_info->bdInfo();
+    if(bd_info) {
+        auto manufacturerID = primo::ustring(bd_info->manufacturerID());
+        auto mediaTypeID = primo::ustring(bd_info->mediaTypeID());
+        
+        cout << "  --- BD Info ---" << endl;
+        cout << "  Manufacturer ID  : " << manufacturerID.str() << endl;
+        cout << "  Media Type ID    : " << mediaTypeID.str() << endl;
+        cout << "  Product Revision : " << setfill('0') << setw(3) << bd_info->productRevision() << endl;
+    }
+}
+```
+
+## Print DVD Info
+
+```cpp
+void print_dvd_info(pb::MediaInfo* media_info)
+{
+    using namespace std;
+
+    cout << "  --- DVD Media Info ---" << endl;
+    cout << "  DVD Video CSS (DVD Audio CPPM) : " << (media_info->isDVDCssCppm() ? "yes" : "no") << endl;
+    cout << "  DVD Recordable with CPRM : " << (media_info->isDVDCprm() ? "yes" : "no") << endl;
+
+    pb::DVDMediaInfo* dvd_info = media_info->dvdInfo();
+    if(dvd_info)
+    {
+        print_dvd_plus_info(dvd_info->plusInfo());
+        print_dvd_minus_info(dvd_info->minusInfo());
+    }
+}
+```
+
+## Print DVD Plus Info
+
+```cpp
+void print_dvd_plus_info(pb::DVDPlusMediaInfo* dvd_plus_info)
+{
+    using namespace std;
+
+    if(dvd_plus_info) {
+        auto manufacturerID = primo::ustring(dvd_plus_info->manufacturerID());
+        auto mediaTypeID = primo::ustring(dvd_plus_info->mediaTypeID());
+
+        cout << "  --- DVD Plus Info ---" << endl;
+        cout << "  Manufacturer ID  : " << manufacturerID.str() << endl;
+        cout << "  Media Type ID    : " << mediaTypeID.str() << endl;
+        cout << "  Product Revision : " << setfill('0') << setw(3) << dvd_plus_info->productRevision() << endl;
+    }
+}
+```
+
+## Print DVD Minus Info
+
+```cpp
+void print_dvd_minus_info(pb::DVDMinusMediaInfo* dvd_minus_info)
+{
+    using namespace std;
+
+    if(dvd_minus_info)
+    {
+        auto manufacturerID1 = primo::ustring(dvd_minus_info->manufacturerID1());
+        auto manufacturerID2 = primo::ustring(dvd_minus_info->manufacturerID2());
+
+        uint8_t buffer[6] = {0};
+        uint32_t retrieved = dvd_minus_info->manufacturerID3((uint8_t*)buffer, sizeof(buffer));
+
+        cout << "  --- DVD Minus Info ---" << endl;
+        cout << "  First Manufacturer ID  : " << manufacturerID1.str() << endl;
+        cout << "  Second Manufacturer ID : " << manufacturerID2.str() << endl;
+        cout << "  Third Manufacturer ID - bytes retrieved: " << retrieved << endl;
+        for (size_t i = 0; i < retrieved; i++)
+            cout << "  Byte # " << (int)i << " 0" << hex << setfill('0') << buffer[i] << endl;
+    }
+}
+```
 
 ## Complete C++ Code
 
@@ -115,6 +216,7 @@ This is the complete C++ code including all supporting functions:
 #include <primo/platform/reference++.h>
 
 #include <iostream>
+#include <iomanip>
 
 namespace p = primo;
 namespace pb = primo::burner;
@@ -123,22 +225,22 @@ const bool media_is_fully_formatted(pb::Device* device)
 {
     assert(device != nullptr);
 
-	// Get media profile
-	auto mp = device->mediaProfile();
+    // Get media profile
+    auto mp = device->mediaProfile();
 
-	// DVD+RW
-	if (pb::MediaProfile::DVDPlusRW == mp)
-		return (pb::BgFormatStatus::Completed == device->bgFormatStatus());
+    // DVD+RW
+    if (pb::MediaProfile::DVDPlusRW == mp)
+        return (pb::BgFormatStatus::Completed == device->bgFormatStatus());
 
-	// DVD-RW for Restricted Overwrite
-	if (pb::MediaProfile::DVDMinusRWRO == mp)
-		return device->mediaCapacity() == device->mediaFreeSpace();
+    // DVD-RW for Restricted Overwrite
+    if (pb::MediaProfile::DVDMinusRWRO == mp)
+        return device->mediaCapacity() == device->mediaFreeSpace();
 
-	// BD-RE
-	if (pb::MediaProfile::BDRE == mp || pb::MediaProfile::BDRSrm == mp || pb::MediaProfile::BDRSrmPow == mp || pb::MediaProfile::BDRRrm == mp)
-		return 1 == device->isMediaFormatted();
+    // BD-RE
+    if (pb::MediaProfile::BDRE == mp || pb::MediaProfile::BDRSrm == mp || pb::MediaProfile::BDRSrmPow == mp || pb::MediaProfile::BDRRrm == mp)
+        return 1 == device->isMediaFormatted();
 
-	return false;
+    return false;
 }
 
 p::ustring media_profile_string(pb::Device* device, pb::MediaProfile::Enum media_profile) {
@@ -234,6 +336,75 @@ p::ustring media_profile_string(pb::Device* device, pb::MediaProfile::Enum media
     }
 }
 
+void print_bd_info(pb::MediaInfo* media_info)
+{
+    using namespace std;
+
+    auto bd_info = media_info->bdInfo();
+    if(bd_info) {
+        auto manufacturerID = primo::ustring(bd_info->manufacturerID());
+        auto mediaTypeID = primo::ustring(bd_info->mediaTypeID());
+        
+        cout << "  --- BD Info ---" << endl;
+        cout << "  Manufacturer ID  : " << manufacturerID.str() << endl;
+        cout << "  Media Type ID    : " << mediaTypeID.str() << endl;
+        cout << "  Product Revision : " << setfill('0') << setw(3) << bd_info->productRevision() << endl;
+    }
+}
+
+void print_dvd_plus_info(pb::DVDPlusMediaInfo* dvd_plus_info)
+{
+    using namespace std;
+
+    if(dvd_plus_info) {
+        auto manufacturerID = primo::ustring(dvd_plus_info->manufacturerID());
+        auto mediaTypeID = primo::ustring(dvd_plus_info->mediaTypeID());
+
+        cout << "  --- DVD Plus Info ---" << endl;
+        cout << "  Manufacturer ID  : " << manufacturerID.str() << endl;
+        cout << "  Media Type ID    : " << mediaTypeID.str() << endl;
+        cout << "  Product Revision : " << setfill('0') << setw(3) << dvd_plus_info->productRevision() << endl;
+    }
+}
+
+void print_dvd_minus_info(pb::DVDMinusMediaInfo* dvd_minus_info)
+{
+    using namespace std;
+
+    if(dvd_minus_info)
+    {
+        auto manufacturerID1 = primo::ustring(dvd_minus_info->manufacturerID1());
+        auto manufacturerID2 = primo::ustring(dvd_minus_info->manufacturerID2());
+
+        uint8_t buffer[6] = {0};
+        uint32_t retrieved = dvd_minus_info->manufacturerID3((uint8_t*)buffer, sizeof(buffer));
+
+        cout << "  --- DVD Minus Info ---" << endl;
+        cout << "  First Manufacturer ID  : " << manufacturerID1.str() << endl;
+        cout << "  Second Manufacturer ID : " << manufacturerID2.str() << endl;
+        cout << "  Third Manufacturer ID - bytes retrieved: " << retrieved << endl;
+        for (size_t i = 0; i < retrieved; i++)
+            cout << "  Byte # " << (int)i << " 0" << hex << setfill('0') << buffer[i] << endl;
+    }
+}
+
+void print_dvd_info(pb::MediaInfo* media_info)
+{
+    using namespace std;
+
+    cout << "  --- DVD Media Info ---" << endl;
+    cout << "  DVD Video CSS (DVD Audio CPPM) : " << (media_info->isDVDCssCppm() ? "yes" : "no") << endl;
+    cout << "  DVD Recordable with CPRM : " << (media_info->isDVDCprm() ? "yes" : "no") << endl;
+
+    pb::DVDMediaInfo* dvd_info = media_info->dvdInfo();
+    if(dvd_info)
+    {
+        print_dvd_plus_info(dvd_info->plusInfo());
+        print_dvd_minus_info(dvd_info->minusInfo());
+    }
+}
+
+
 void read_media_info(pb::Device* device)
 {
     using namespace std;
@@ -244,7 +415,23 @@ void read_media_info(pb::Device* device)
     auto media_profile = device->mediaProfile();
 
     cout << "  (" << device->driveLetter() << ":) - " << description.str() << endl;
+    cout << "  --- Media Info ---" << endl;
     cout << "  Media Profile : " << media_profile_string(device, media_profile) << endl;
+    cout << "  Blank         : " << (device->isMediaBlank() ? "yes" : "no") << endl;
+    
+    auto media_info = device->readMediaInfo();
+    if (media_info) {
+        
+        if (device->isMediaBD()) {
+            print_bd_info(media_info);
+        } 
+        
+        if (device->isMediaDVD()) {
+            print_dvd_info(media_info);
+        }
+
+        media_info->release();
+    }
 
     cout << endl;
 }
