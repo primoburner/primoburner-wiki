@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Enumerate Devices &#8212; PrimoBurner for C++</title>
+    <title>String Encoding &#8212; PrimoBurner for C++</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -50,12 +50,12 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../../_static/sphinx-thebe.js"></script>
-    <link rel="canonical" href="https://wiki.primoburner.com/primoburner-for-cpp/using-engine/enumerate-devices.html" />
+    <link rel="canonical" href="https://wiki.primoburner.com/primoburner-for-cpp/c-c-api-specifics/string-encoding.html" />
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../../../genindex/" />
     <link rel="search" title="Search" href="../../../search/" />
-    <link rel="next" title="Device" href="../../using-device/" />
-    <link rel="prev" title="Engine" href="../" />
+    <link rel="next" title="C++ Utility Classes and Functions" href="../../c-utility-classes-and-functions/" />
+    <link rel="prev" title="C++ API Specifics" href="../" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -213,19 +213,19 @@ const thebe_selector_output = ".output, .cell_output"
   Components
  </span>
 </p>
-<ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="../">
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../using-engine/">
    Engine
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
   <label for="toctree-checkbox-4">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul class="current">
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../using-engine/enumerate-devices/">
      Enumerate Devices
     </a>
    </li>
@@ -242,6 +242,11 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
+    <a class="reference internal" href="../../using-device/detect-media-state/">
+     Detect Media Presence
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../../using-device/read-media-info/">
      Read Media Info
     </a>
@@ -254,7 +259,24 @@ const thebe_selector_output = ".output, .cell_output"
   C++ API
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../">
+   C++ API Specifics
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     String Encoding
+    </a>
+   </li>
+  </ul>
+ </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../../c-utility-classes-and-functions/">
    C++ Utility Classes and Functions
@@ -382,7 +404,7 @@ title="Fullscreen mode"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../../../_sources/primoburner-for-cpp/using-engine/enumerate-devices.md"
+        <a href="../../../_sources/primoburner-for-cpp/c-c-api-specifics/string-encoding.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -442,8 +464,54 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#complete-c-code">
-   Complete C++ code
+  <a class="reference internal nav-link" href="#unicode-strings">
+   Unicode Strings
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#windows">
+     Windows
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mac">
+     Mac
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#corefoundation">
+       CoreFoundation
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#foundation">
+       Foundation
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#command-line">
+       Command Line
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#linux">
+     Linux
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id1">
+       Command Line
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ansi-strings">
+   ANSI Strings
   </a>
  </li>
 </ul>
@@ -455,7 +523,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Enumerate Devices</h1>
+                <h1>String Encoding</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -466,8 +534,54 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#complete-c-code">
-   Complete C++ code
+  <a class="reference internal nav-link" href="#unicode-strings">
+   Unicode Strings
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#windows">
+     Windows
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mac">
+     Mac
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#corefoundation">
+       CoreFoundation
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#foundation">
+       Foundation
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#command-line">
+       Command Line
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#linux">
+     Linux
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id1">
+       Command Line
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ansi-strings">
+   ANSI Strings
   </a>
  </li>
 </ul>
@@ -480,123 +594,117 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="enumerate-devices">
-<h1>Enumerate Devices<a class="headerlink" href="#enumerate-devices" title="Permalink to this headline">#</a></h1>
-<p>Enumerate the optical devices connected to your system.</p>
-<p>To enumerate the available devices:</p>
-<ol class="simple">
-<li><p>Obtain a <a class="reference external" href="https://doc.primoburner.com/core/latest/classprimo_1_1burner_1_1_device_enum.html ">DeviceEnum </a> object by calling the <a class="reference external" href="https://doc.primoburner.com/core/latest/classprimo_1_1burner_1_1_engine.html ">Engine::createDeviceEnumerator </a> method.</p></li>
-<li><p>Use the <code class="docutils literal notranslate"><span class="pre">DeviceEnum::createDevice</span></code> method to create a <a class="reference external" href="https://doc.primoburner.com/core/latest/classprimo_1_1burner_1_1_device.html ">Device </a> object.</p></li>
-<li><p>Display the <code class="docutils literal notranslate"><span class="pre">Device::driveLetter</span></code> and the <code class="docutils literal notranslate"><span class="pre">Device::description</span></code> properties.</p></li>
-</ol>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;primo/burner/pb.h&gt;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;primo/platform/ustring.h&gt;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;primo/platform/reference++.h&gt;</span>
+  <section class="tex2jax_ignore mathjax_ignore" id="string-encoding">
+<h1>String Encoding<a class="headerlink" href="#string-encoding" title="Permalink to this headline">#</a></h1>
+<p>This topic describes the string encoding used by the PrimoBurner C++ API.</p>
+<section id="unicode-strings">
+<h2>Unicode Strings<a class="headerlink" href="#unicode-strings" title="Permalink to this headline">#</a></h2>
+<p>The PrimoBurner API uses UTF-16 unicode encoding.</p>
+<p>The PrimoBurner API character type is <code class="docutils literal notranslate"><span class="pre">char_t</span></code>, where <code class="docutils literal notranslate"><span class="pre">char_t</span></code> represents a UTF-16 character and is defined as a 16 bit unsigned integer on all platforms (Windows, Mac and Linux).</p>
+<p>Note: A Unicode character can be expressed by 1 or 2 UTF-16 code units, i.e. by 2 or 4 bytes.</p>
+<section id="windows">
+<h3>Windows<a class="headerlink" href="#windows" title="Permalink to this headline">#</a></h3>
+<p>On Windows the <code class="docutils literal notranslate"><span class="pre">char_t</span></code> type is the same as the <code class="docutils literal notranslate"><span class="pre">wchar_t</span></code> type. Your Windows application must be compiled for Unicode OR alternatively you should convert strings to <code class="docutils literal notranslate"><span class="pre">wchar_t</span></code> before passing calling the PrimoBurner API.</p>
+</section>
+<section id="mac">
+<h3>Mac<a class="headerlink" href="#mac" title="Permalink to this headline">#</a></h3>
+<section id="corefoundation">
+<h4>CoreFoundation<a class="headerlink" href="#corefoundation" title="Permalink to this headline">#</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">CFStringRef</span></code> is UTF-16, so the encoding matches the <code class="docutils literal notranslate"><span class="pre">char_t</span></code> encoding. In your code, you can use the <code class="docutils literal notranslate"><span class="pre">CFStringGetCharactersPtr</span></code> function:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Get a UniChar* pointer from CFStringRef and pass it to PrimoBurner</span>
 
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+<span class="n">NSString</span><span class="w"> </span><span class="n">theString</span><span class="p">;</span>
+<span class="k">const</span><span class="w"> </span><span class="n">UniChar</span><span class="o">*</span><span class="w"> </span><span class="n">theStringPtr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CFStringGetCharactersPtr</span><span class="p">((</span><span class="n">__bridge</span><span class="w"> </span><span class="n">CFStringRef</span><span class="p">)</span><span class="w"> </span><span class="n">theString</span><span class="p">);</span>
 
-<span class="k">namespace</span><span class="w"> </span><span class="nn">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nn">primo</span><span class="p">;</span>
-<span class="k">namespace</span><span class="w"> </span><span class="nn">pb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nn">primo</span><span class="o">::</span><span class="nn">burner</span><span class="p">;</span>
-
-<span class="kt">void</span><span class="w"> </span><span class="nf">print_device</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">index</span><span class="p">,</span><span class="w"> </span><span class="n">pb</span><span class="o">::</span><span class="n">Device</span><span class="o">*</span><span class="w"> </span><span class="n">device</span><span class="p">)</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="p">;</span>
-
-<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="o">::</span><span class="n">ustring</span><span class="p">(</span><span class="n">device</span><span class="o">-&gt;</span><span class="n">description</span><span class="p">());</span>
-<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">systemPath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="o">::</span><span class="n">ustring</span><span class="p">(</span><span class="n">device</span><span class="o">-&gt;</span><span class="n">systemPath</span><span class="p">());</span>
-
-<span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Device : &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">index</span><span class="w">  </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
-<span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;  Description  : &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">description</span><span class="p">.</span><span class="n">str</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
-<span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;  Drive Letter : &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">device</span><span class="o">-&gt;</span><span class="n">driveLetter</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
-<span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;  System Path  : &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">systemPath</span><span class="p">.</span><span class="n">str</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
-
-<span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="kt">void</span><span class="w"> </span><span class="n">enumerate_devices</span><span class="p">(</span><span class="n">pb</span><span class="o">::</span><span class="n">Engine</span><span class="o">*</span><span class="w"> </span><span class="n">engine</span><span class="p">)</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="c1">// create device enumerator</span>
-<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">enumerator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="o">::</span><span class="n">make_ref</span><span class="p">(</span><span class="n">engine</span><span class="o">-&gt;</span><span class="n">createDeviceEnumerator</span><span class="p">());</span>
-
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">enumerator</span><span class="o">-&gt;</span><span class="n">count</span><span class="p">();</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="c1">// create a device; do not ask for exclusive access</span>
-<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">device</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="o">::</span><span class="n">make_ref</span><span class="p">(</span><span class="n">enumerator</span><span class="o">-&gt;</span><span class="n">createDevice</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">));</span>
-<span class="w">        </span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">device</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">print_device</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">device</span><span class="p">.</span><span class="n">get</span><span class="p">());</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
+<span class="n">primo</span><span class="o">::</span><span class="n">burner</span><span class="o">::</span><span class="n">DataFile</span><span class="o">*</span><span class="w"> </span><span class="n">dataFile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">primo</span><span class="o">::</span><span class="n">burner</span><span class="o">::</span><span class="n">Library</span><span class="o">::</span><span class="n">createDataFile</span><span class="p">();</span>
+<span class="w">    </span><span class="n">dataFile</span><span class="o">-&gt;</span><span class="n">setLongFilename</span><span class="p">(</span><span class="n">theStringPtr</span><span class="p">);</span>
+<span class="n">dataFile</span><span class="o">-&gt;</span><span class="n">release</span><span class="p">();</span>
 </pre></div>
 </div>
-<section id="complete-c-code">
-<h2>Complete C++ code<a class="headerlink" href="#complete-c-code" title="Permalink to this headline">#</a></h2>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;primo/burner/pb.h&gt;</span>
+</section>
+<section id="foundation">
+<h4>Foundation<a class="headerlink" href="#foundation" title="Permalink to this headline">#</a></h4>
+<p>NSString is UTF-16. The UTF-16 encoding matches the PrimoBurner API. You can use the <code class="docutils literal notranslate"><span class="pre">CFStringGetCharactersPtr</span></code> function:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Get a UniChar* pointer from NSString and pass it to PrimoBurner</span>
+
+<span class="n">NSString</span><span class="w"> </span><span class="n">theString</span><span class="p">;</span>
+<span class="k">const</span><span class="w"> </span><span class="n">UniChar</span><span class="o">*</span><span class="w"> </span><span class="n">theStringPtr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CFStringGetCharactersPtr</span><span class="p">((</span><span class="n">__bridge</span><span class="w"> </span><span class="n">CFStringRef</span><span class="p">)</span><span class="w"> </span><span class="n">theString</span><span class="p">);</span>
+
+<span class="n">primo</span><span class="o">::</span><span class="n">burner</span><span class="o">::</span><span class="n">DataFile</span><span class="o">*</span><span class="w"> </span><span class="n">dataFile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">primo</span><span class="o">::</span><span class="n">burner</span><span class="o">::</span><span class="n">Library</span><span class="o">::</span><span class="n">createDataFile</span><span class="p">();</span>
+<span class="w">    </span><span class="n">dataFile</span><span class="o">-&gt;</span><span class="n">setLongFilename</span><span class="p">(</span><span class="n">theStringPtr</span><span class="p">);</span>
+<span class="n">dataFile</span><span class="o">-&gt;</span><span class="n">release</span><span class="p">();</span>
+</pre></div>
+</div>
+</section>
+<section id="command-line">
+<h4>Command Line<a class="headerlink" href="#command-line" title="Permalink to this headline">#</a></h4>
+<p>On Mac / Unix, <code class="docutils literal notranslate"><span class="pre">wchar_t</span></code> is defined as a 32-bit unsigned integer by default. Conversion is required between your code (if using UTF-8 or UTF-32 encoding)  and <code class="docutils literal notranslate"><span class="pre">char_t</span></code> (UTF-16 encoding).</p>
+<p>PrimoBurner comes with the <code class="docutils literal notranslate"><span class="pre">primo::ustring</span></code> helper class (defined in <code class="docutils literal notranslate"><span class="pre">include/primo/ustring.h</span></code>) which can be used for string conversion:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="linux">
+<h3>Linux<a class="headerlink" href="#linux" title="Permalink to this headline">#</a></h3>
+<section id="id1">
+<h4>Command Line<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h4>
+<p>On Linux, <code class="docutils literal notranslate"><span class="pre">wchar_t</span></code> is defined as a 32-bit unsigned integer by default. Conversion is required between your code (if using UTF-8 or UTF-32 encoding) and <code class="docutils literal notranslate"><span class="pre">char_t</span></code> (UTF-16 encoding).</p>
+<p>PrimoBurner comes with the <code class="docutils literal notranslate"><span class="pre">primo::ustring</span></code> helper class (defined in <code class="docutils literal notranslate"><span class="pre">include/PrimoUString.h</span></code>) which can be used for string conversion. The <code class="docutils literal notranslate"><span class="pre">MetaInfo</span></code> sample demonstrates the use of the <code class="docutils literal notranslate"><span class="pre">primo::ustring</span></code> class.</p>
+<p>For example, this line uses the <code class="docutils literal notranslate"><span class="pre">ustring</span></code> class:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span><span class="w"> </span><span class="n">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="o">::</span><span class="n">ustring</span><span class="p">(</span><span class="n">device</span><span class="o">-&gt;</span><span class="n">description</span><span class="p">());</span>
+</pre></div>
+</div>
+<p>from the <a class="reference internal" href="../../getting-started-linux/create-cpp-command-line-tool-cmake/"><span class="doc std std-doc">Getting Started on Linux</span></a> example:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;primo/burner/pb.h&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;primo/platform/ustring.h&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;primo/platform/reference++.h&gt;</span>
-
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
 
 <span class="k">namespace</span><span class="w"> </span><span class="nn">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nn">primo</span><span class="p">;</span>
 <span class="k">namespace</span><span class="w"> </span><span class="nn">pb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nn">primo</span><span class="o">::</span><span class="nn">burner</span><span class="p">;</span>
 
-<span class="kt">void</span><span class="w"> </span><span class="nf">print_device</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">index</span><span class="p">,</span><span class="w"> </span><span class="n">pb</span><span class="o">::</span><span class="n">Device</span><span class="o">*</span><span class="w"> </span><span class="n">device</span><span class="p">)</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="p">;</span>
-
-<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="o">::</span><span class="n">ustring</span><span class="p">(</span><span class="n">device</span><span class="o">-&gt;</span><span class="n">description</span><span class="p">());</span>
-<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">systemPath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="o">::</span><span class="n">ustring</span><span class="p">(</span><span class="n">device</span><span class="o">-&gt;</span><span class="n">systemPath</span><span class="p">());</span>
-
-<span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Device : &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">index</span><span class="w">  </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
-<span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;  Description  : &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">description</span><span class="p">.</span><span class="n">str</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
-<span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;  Drive Letter : &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">device</span><span class="o">-&gt;</span><span class="n">driveLetter</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
-<span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;  System Path  : &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">systemPath</span><span class="p">.</span><span class="n">str</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
-
-<span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="kt">void</span><span class="w"> </span><span class="n">enumerate_devices</span><span class="p">(</span><span class="n">pb</span><span class="o">::</span><span class="n">Engine</span><span class="o">*</span><span class="w"> </span><span class="n">engine</span><span class="p">)</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="c1">// create device enumerator</span>
-<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">enumerator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="o">::</span><span class="n">make_ref</span><span class="p">(</span><span class="n">engine</span><span class="o">-&gt;</span><span class="n">createDeviceEnumerator</span><span class="p">());</span>
-
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">enumerator</span><span class="o">-&gt;</span><span class="n">count</span><span class="p">();</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="c1">// create a device; do not ask for exclusive access</span>
-<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">device</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="o">::</span><span class="n">make_ref</span><span class="p">(</span><span class="n">enumerator</span><span class="o">-&gt;</span><span class="n">createDevice</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">));</span>
-<span class="w">        </span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">device</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">print_device</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">device</span><span class="p">.</span><span class="n">get</span><span class="p">());</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-
-<span class="kt">void</span><span class="w"> </span><span class="n">enumerate_devices</span><span class="p">()</span>
-<span class="p">{</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">argv</span><span class="p">[])</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// Create engine</span>
 <span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">engine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="o">::</span><span class="n">make_ref</span><span class="p">(</span><span class="n">pb</span><span class="o">::</span><span class="n">Library</span><span class="o">::</span><span class="n">createEngine</span><span class="p">());</span>
 
 <span class="w">    </span><span class="c1">// Initialize engine</span>
 <span class="w">    </span><span class="n">engine</span><span class="o">-&gt;</span><span class="n">initialize</span><span class="p">();</span>
 
-<span class="w">    </span><span class="n">enumerate_devices</span><span class="p">(</span><span class="n">engine</span><span class="p">.</span><span class="n">get</span><span class="p">());</span>
+<span class="w">    </span><span class="c1">// create device enumerator</span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">enumerator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="o">::</span><span class="n">make_ref</span><span class="p">(</span><span class="n">engine</span><span class="o">-&gt;</span><span class="n">createDeviceEnumerator</span><span class="p">());</span>
+
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">enumerator</span><span class="o">-&gt;</span><span class="n">count</span><span class="p">();</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// create a device; do not ask for exclusive access</span>
+<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">device</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="o">::</span><span class="n">make_ref</span><span class="p">(</span><span class="n">enumerator</span><span class="o">-&gt;</span><span class="n">createDevice</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">));</span>
+<span class="w">        </span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">device</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="p">;</span>
+
+<span class="w">            </span><span class="k">auto</span><span class="w"> </span><span class="n">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="o">::</span><span class="n">ustring</span><span class="p">(</span><span class="n">device</span><span class="o">-&gt;</span><span class="n">description</span><span class="p">());</span>
+
+<span class="w">            </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Device       : &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+<span class="w">            </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Description  : &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">description</span><span class="p">.</span><span class="n">str</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+
+<span class="w">            </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="c1">// terminate engine</span>
 <span class="w">    </span><span class="n">engine</span><span class="o">-&gt;</span><span class="n">shutdown</span><span class="p">();</span>
-<span class="p">}</span>
-
-<span class="kt">int</span><span class="w"> </span><span class="n">main</span><span class="p">()</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="c1">// Set license. To run PrimoBurner in demo mode, comment the next line out</span>
-<span class="w">    </span><span class="n">pb</span><span class="o">::</span><span class="n">Library</span><span class="o">::</span><span class="n">setLicense</span><span class="p">(</span><span class="s">&quot;license-xml-string&quot;</span><span class="p">);</span>
 <span class="w">    </span>
-<span class="w">    </span><span class="n">pb</span><span class="o">::</span><span class="n">Library</span><span class="o">::</span><span class="n">enableTraceLog</span><span class="p">();</span>
-<span class="w">    </span>
-<span class="w">    </span><span class="n">enumerate_devices</span><span class="p">();</span>
-<span class="w">    </span>
-<span class="w">    </span><span class="n">pb</span><span class="o">::</span><span class="n">Library</span><span class="o">::</span><span class="n">disableTraceLog</span><span class="p">();</span>
-
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="ansi-strings">
+<h2>ANSI Strings<a class="headerlink" href="#ansi-strings" title="Permalink to this headline">#</a></h2>
+<p>A few functions in the PrimoBurner API may use plain 8-bit ANSI <code class="docutils literal notranslate"><span class="pre">char</span></code> for convenience. For example, the <code class="docutils literal notranslate"><span class="pre">Library::setLicense</span></code> takes an ANSI string as input:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">Library</span><span class="o">::</span><span class="n">setLicense</span><span class="p">(</span><span class="s">&quot;license-xml-string&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
 </section>
@@ -615,7 +723,7 @@ title="Print to PDF"
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./primoburner-for-cpp/using-engine"
+            path: "./primoburner-for-cpp/c-c-api-specifics"
         },
         predefinedOutput: true
     }
@@ -633,13 +741,13 @@ title="Print to PDF"
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Engine</p>
+            <p class="prev-next-title">C++ API Specifics</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../../using-device/" title="next page">
+    <a class='right-next' id="next-link" href="../../c-utility-classes-and-functions/" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Device</p>
+        <p class="prev-next-title">C++ Utility Classes and Functions</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

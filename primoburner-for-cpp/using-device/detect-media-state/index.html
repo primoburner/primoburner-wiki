@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Developing with Visual Studio Code on Ubuntu &#8212; PrimoBurner for C++</title>
+    <title>Detect Media Presence &#8212; PrimoBurner for C++</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -50,12 +50,10 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../../_static/sphinx-thebe.js"></script>
-    <link rel="canonical" href="https://wiki.primoburner.com/primoburner-for-cpp/getting-started-linux/developing-with-vscode.html" />
+    <link rel="canonical" href="https://wiki.primoburner.com/primoburner-for-cpp/using-device/detect-media-state.html" />
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../../../genindex/" />
     <link rel="search" title="Search" href="../../../search/" />
-    <link rel="next" title="Getting Started - macOS" href="../../getting-started-macos/" />
-    <link rel="prev" title="Create a Command Line Tool using CMake on Ubuntu" href="../create-cpp-command-line-tool-cmake/" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -120,24 +118,24 @@ const thebe_selector_output = ".output, .cell_output"
   Getting Started
  </span>
 </p>
-<ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="../">
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../getting-started-linux/">
    Getting Started - Linux
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul class="current">
+  <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../create-cpp-command-line-tool-cmake/">
+    <a class="reference internal" href="../../getting-started-linux/create-cpp-command-line-tool-cmake/">
      Create a Command Line Tool using CMake on Ubuntu
     </a>
    </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../getting-started-linux/developing-with-vscode/">
      Developing with Visual Studio Code on Ubuntu
     </a>
    </li>
@@ -232,7 +230,7 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../using-device/">
+  <a class="reference internal" href="../">
    Device
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
@@ -242,7 +240,7 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../../using-device/read-media-info/">
+    <a class="reference internal" href="../read-media-info/">
      Read Media Info
     </a>
    </li>
@@ -382,7 +380,7 @@ title="Fullscreen mode"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../../../_sources/primoburner-for-cpp/getting-started-linux/developing-with-vscode.md"
+        <a href="../../../_sources/primoburner-for-cpp/using-device/detect-media-state.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -442,48 +440,8 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#visual-studio-code">
-   Visual Studio Code
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#create-cmake-project">
-   Create CMake project
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#automate-the-build">
-   Automate the build
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#vscode-tasks-json">
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       .vscode/tasks.json
-      </span>
-     </code>
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#vscode-launch-json">
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       .vscode/launch.json
-      </span>
-     </code>
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#test-the-build">
-   Test the build
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#test-the-debugging">
-   Test the debugging
+  <a class="reference internal nav-link" href="#complete-net-code">
+   Complete .NET code
   </a>
  </li>
 </ul>
@@ -495,7 +453,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Developing with Visual Studio Code on Ubuntu</h1>
+                <h1>Detect Media Presence</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -506,48 +464,8 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#visual-studio-code">
-   Visual Studio Code
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#create-cmake-project">
-   Create CMake project
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#automate-the-build">
-   Automate the build
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#vscode-tasks-json">
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       .vscode/tasks.json
-      </span>
-     </code>
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#vscode-launch-json">
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       .vscode/launch.json
-      </span>
-     </code>
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#test-the-build">
-   Test the build
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#test-the-debugging">
-   Test the debugging
+  <a class="reference internal nav-link" href="#complete-net-code">
+   Complete .NET code
   </a>
  </li>
 </ul>
@@ -560,71 +478,89 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="developing-with-visual-studio-code-on-ubuntu">
-<h1>Developing with Visual Studio Code on Ubuntu<a class="headerlink" href="#developing-with-visual-studio-code-on-ubuntu" title="Permalink to this headline">#</a></h1>
-<p>This topic describes the steps needed to setup Visual Studio Code for PrimoBurner development on Ubuntu. These steps have been verified to work on Ubuntu 22.04.3 LTS.</p>
-<section id="visual-studio-code">
-<h2>Visual Studio Code<a class="headerlink" href="#visual-studio-code" title="Permalink to this headline">#</a></h2>
-<p>Download and install from <a class="reference external" href="https://code.visualstudio.com/download">Visual Studio Code</a> site.</p>
-<p>Open Visual Studio Code and press <code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">Shift</span> <span class="pre">+</span> <span class="pre">P</span></code>. Select <code class="docutils literal notranslate"><span class="pre">Shell</span> <span class="pre">Command:</span> <span class="pre">Install</span> <span class="pre">'code'</span> <span class="pre">command</span> <span class="pre">in</span> <span class="pre">PATH</span></code>.</p>
-<p>Also install the <a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools-extension-pack">C/C++ Extension Pack</a>.</p>
-</section>
-<section id="create-cmake-project">
-<h2>Create CMake project<a class="headerlink" href="#create-cmake-project" title="Permalink to this headline">#</a></h2>
-<p>Follow the steps in <a class="reference internal" href="../create-cpp-command-line-tool-cmake/"><span class="doc std std-doc">Create a Command Line Tool using CMake</span></a> to create a CMake project.</p>
-</section>
-<section id="automate-the-build">
-<h2>Automate the build<a class="headerlink" href="#automate-the-build" title="Permalink to this headline">#</a></h2>
-<p>Add the following Visual Studio Code specific files to the <code class="docutils literal notranslate"><span class="pre">.vscode</span></code> subdir:</p>
-<section id="vscode-tasks-json">
-<h3><code class="docutils literal notranslate"><span class="pre">.vscode/tasks.json</span></code><a class="headerlink" href="#vscode-tasks-json" title="Permalink to this headline">#</a></h3>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2.0.0&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;tasks&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+  <section class="tex2jax_ignore mathjax_ignore" id="detect-media-presence">
+<h1>Detect Media Presence<a class="headerlink" href="#detect-media-presence" title="Permalink to this headline">#</a></h1>
+<p>Detect whether there is media in a device or not. This is how you do it:</p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">private</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">DetectMediaPresence</span><span class="p">(</span><span class="n">Device</span><span class="w"> </span><span class="n">device</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;({0}:) - {1}&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">device</span><span class="p">.</span><span class="n">DriveLetter</span><span class="p">,</span><span class="w"> </span><span class="n">device</span><span class="p">.</span><span class="n">Description</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot; Media State : {0}&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">device</span><span class="p">.</span><span class="n">MediaState</span><span class="p">);</span>
+<span class="w">    </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot; Unit Ready  : {0}&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">DeviceError</span><span class="p">)</span><span class="n">device</span><span class="p">.</span><span class="n">UnitReady</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">();</span><span class="w"> </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<section id="complete-net-code">
+<h2>Complete .NET code<a class="headerlink" href="#complete-net-code" title="Permalink to this headline">#</a></h2>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="nn">System</span><span class="p">;</span>
+<span class="w">    </span>
+<span class="k">using</span><span class="w"> </span><span class="nn">PrimoSoftware.Burner</span><span class="p">;</span>
+
+<span class="k">namespace</span><span class="w"> </span><span class="nn">DetectMediaPresence</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">class</span><span class="w"> </span><span class="nc">Program</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">private</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">DetectMediaPresence</span><span class="p">(</span><span class="n">Device</span><span class="w"> </span><span class="n">device</span><span class="p">)</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Build&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;shell&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;linux&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;${workspaceFolder}/build.sh&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="p">},</span>
-<span class="w">            </span><span class="nt">&quot;group&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="nt">&quot;kind&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;build&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;isDefault&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;({0}:) - {1}&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">device</span><span class="p">.</span><span class="n">DriveLetter</span><span class="p">,</span><span class="w"> </span><span class="n">device</span><span class="p">.</span><span class="n">Description</span><span class="p">);</span>
+
+<span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot; Media State : {0}&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">device</span><span class="p">.</span><span class="n">MediaState</span><span class="p">);</span>
+<span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot; Unit Ready  : {0}&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">DeviceError</span><span class="p">)</span><span class="n">device</span><span class="p">.</span><span class="n">UnitReady</span><span class="p">);</span>
+
+<span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">();</span><span class="w"> </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">();</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="k">private</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">DetectMediaPresence</span><span class="p">(</span><span class="n">Engine</span><span class="w"> </span><span class="n">engine</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="c1">// create device enumerator</span>
+<span class="w">            </span><span class="k">using</span><span class="w"> </span><span class="p">(</span><span class="kt">var</span><span class="w"> </span><span class="n">enumerator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">engine</span><span class="p">.</span><span class="n">CreateDeviceEnumerator</span><span class="p">())</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">enumerator</span><span class="p">.</span><span class="n">Count</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="c1">// create a device; do not ask for exclusive access</span>
+<span class="w">                    </span><span class="kt">var</span><span class="w"> </span><span class="n">device</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">enumerator</span><span class="p">.</span><span class="n">CreateDevice</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="k">false</span><span class="p">);</span>
+<span class="w">                    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">null</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">device</span><span class="p">)</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="n">DetectMediaPresence</span><span class="p">(</span><span class="n">device</span><span class="p">);</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                </span><span class="p">}</span>
 <span class="w">            </span><span class="p">}</span>
 <span class="w">        </span><span class="p">}</span>
-<span class="w">    </span><span class="p">]</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-</section>
-<section id="vscode-launch-json">
-<h3><code class="docutils literal notranslate"><span class="pre">.vscode/launch.json</span></code><a class="headerlink" href="#vscode-launch-json" title="Permalink to this headline">#</a></h3>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0.2.0&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;configurations&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+
+<span class="w">        </span><span class="k">private</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">DetectMediaPresence</span><span class="p">()</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Launch (gdb)&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cppdbg&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;request&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;launch&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;cwd&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;${workspaceFolder}&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;linux&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="nt">&quot;program&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;${workspaceFolder}/build/debug/enum-devices&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;MIMode&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;gdb&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="p">},</span>
-<span class="w">        </span><span class="p">}</span><span class="w">    </span>
-<span class="w">    </span><span class="p">]</span>
+<span class="w">            </span><span class="c1">// Create engine</span>
+<span class="w">            </span><span class="k">using</span><span class="w"> </span><span class="p">(</span><span class="kt">var</span><span class="w"> </span><span class="n">engine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Engine</span><span class="p">())</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="c1">// Initialize the engine</span>
+<span class="w">                </span><span class="n">engine</span><span class="p">.</span><span class="n">Initialize</span><span class="p">();</span>
+
+<span class="w">                </span><span class="n">DetectMediaPresence</span><span class="p">(</span><span class="n">engine</span><span class="p">);</span>
+
+<span class="w">                </span><span class="c1">// terminate engine</span>
+<span class="w">                </span><span class="n">engine</span><span class="p">.</span><span class="n">Shutdown</span><span class="p">();</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="k">static</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="c1">// Initialize PrimoBurner</span>
+<span class="w">            </span><span class="n">Library</span><span class="p">.</span><span class="n">Initialize</span><span class="p">();</span>
+
+<span class="w">            </span><span class="c1">// Set license. To run PrimoBurner in demo mode, comment the next line out</span>
+<span class="w">            </span><span class="n">Library</span><span class="p">.</span><span class="n">SetLicense</span><span class="p">(</span><span class="s">&quot;license-xml-string&quot;</span><span class="p">);</span>
+
+<span class="w">            </span><span class="c1">// presence </span>
+<span class="w">            </span><span class="n">DetectMediaPresence</span><span class="p">();</span><span class="w"> </span>
+
+<span class="w">            </span><span class="n">Library</span><span class="p">.</span><span class="n">Shutdown</span><span class="p">();</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </div>
-</section>
-</section>
-<section id="test-the-build">
-<h2>Test the build<a class="headerlink" href="#test-the-build" title="Permalink to this headline">#</a></h2>
-<p>Test the build by pressing <code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">Shift</span> <span class="pre">+</span> <span class="pre">B</span></code>. Visual Studio Code should execute the <code class="docutils literal notranslate"><span class="pre">build.sh</span></code> script automatically.</p>
-</section>
-<section id="test-the-debugging">
-<h2>Test the debugging<a class="headerlink" href="#test-the-debugging" title="Permalink to this headline">#</a></h2>
-<p>Set a breakpoint on the first line of <code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">main(int</span> <span class="pre">argc,</span> <span class="pre">const</span> <span class="pre">char</span> <span class="pre">*argv[])</span></code> inside <code class="docutils literal notranslate"><span class="pre">src/main.cpp</span></code>. Press <code class="docutils literal notranslate"><span class="pre">F5</span></code> to launch the debugger. It should stop at the breakpoint.</p>
 </section>
 </section>
 
@@ -641,7 +577,7 @@ title="Print to PDF"
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./primoburner-for-cpp/getting-started-linux"
+            path: "./primoburner-for-cpp/using-device"
         },
         predefinedOutput: true
     }
@@ -655,20 +591,6 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="../create-cpp-command-line-tool-cmake/" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Create a Command Line Tool using CMake on Ubuntu</p>
-        </div>
-    </a>
-    <a class='right-next' id="next-link" href="../../getting-started-macos/" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Getting Started - macOS</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
 </div>
             </footer>
         </div>
