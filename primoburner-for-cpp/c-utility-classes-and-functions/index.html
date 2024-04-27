@@ -242,6 +242,11 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
+    <a class="reference internal" href="../using-device/detect-media-state/">
+     Detect Media Presence
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../using-device/read-media-info/">
      Read Media Info
     </a>
@@ -447,6 +452,11 @@ title="Print to PDF"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#media-state-string">
+     media_state_string
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#media-is-fully-formatted">
      media_is_fully_formatted
     </a>
@@ -483,6 +493,11 @@ title="Print to PDF"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#media-state-string">
+     media_state_string
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#media-is-fully-formatted">
      media_is_fully_formatted
     </a>
@@ -509,13 +524,36 @@ title="Print to PDF"
 <p>This topic lists the utility classes and functions used by the C++ code snippets on this site.</p>
 <section id="functions">
 <h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">#</a></h2>
+<section id="media-state-string">
+<h3>media_state_string<a class="headerlink" href="#media-state-string" title="Permalink to this headline">#</a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;primo/burner/pb.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;primo/platform/ustring.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;primo/platform/reference++.h&gt;</span>
+
+<span class="k">namespace</span><span class="w"> </span><span class="nn">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nn">primo</span><span class="p">;</span>
+<span class="k">namespace</span><span class="w"> </span><span class="nn">pb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nn">primo</span><span class="o">::</span><span class="nn">burner</span><span class="p">;</span>
+
+<span class="n">p</span><span class="o">::</span><span class="n">ustring</span><span class="w"> </span><span class="nf">media_state_string</span><span class="p">(</span><span class="n">pb</span><span class="o">::</span><span class="n">MediaReady</span><span class="o">::</span><span class="n">Enum</span><span class="w"> </span><span class="n">media_state</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">media_state</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">pb</span><span class="o">::</span><span class="no">MediaReady</span><span class="o">::</span><span class="no">StateUnknown</span><span class="p">:</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;Unknown&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">pb</span><span class="o">::</span><span class="no">MediaReady</span><span class="o">::</span><span class="no">NotPresent</span><span class="p">:</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;Not Present&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">pb</span><span class="o">::</span><span class="no">MediaReady</span><span class="o">::</span><span class="no">Present</span><span class="p">:</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;Present&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="k">default</span><span class="o">:</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;Unknown&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
 <section id="media-is-fully-formatted">
 <h3>media_is_fully_formatted<a class="headerlink" href="#media-is-fully-formatted" title="Permalink to this headline">#</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;primo/burner/pb.h&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;primo/platform/ustring.h&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;primo/platform/reference++.h&gt;</span>
-
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
 
 <span class="k">namespace</span><span class="w"> </span><span class="nn">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nn">primo</span><span class="p">;</span>
 <span class="k">namespace</span><span class="w"> </span><span class="nn">pb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nn">primo</span><span class="o">::</span><span class="nn">burner</span><span class="p">;</span>
@@ -546,7 +584,14 @@ title="Print to PDF"
 </section>
 <section id="media-profile-string">
 <h3>media_profile_string<a class="headerlink" href="#media-profile-string" title="Permalink to this headline">#</a></h3>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">p</span><span class="o">::</span><span class="n">ustring</span><span class="w"> </span><span class="nf">media_profile_string</span><span class="p">(</span><span class="n">pb</span><span class="o">::</span><span class="n">Device</span><span class="o">*</span><span class="w"> </span><span class="n">device</span><span class="p">,</span><span class="w"> </span><span class="n">pb</span><span class="o">::</span><span class="n">MediaProfile</span><span class="o">::</span><span class="n">Enum</span><span class="w"> </span><span class="n">media_profile</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;primo/burner/pb.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;primo/platform/ustring.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;primo/platform/reference++.h&gt;</span>
+
+<span class="k">namespace</span><span class="w"> </span><span class="nn">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nn">primo</span><span class="p">;</span>
+<span class="k">namespace</span><span class="w"> </span><span class="nn">pb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nn">primo</span><span class="o">::</span><span class="nn">burner</span><span class="p">;</span>
+
+<span class="n">p</span><span class="o">::</span><span class="n">ustring</span><span class="w"> </span><span class="nf">media_profile_string</span><span class="p">(</span><span class="n">pb</span><span class="o">::</span><span class="n">Device</span><span class="o">*</span><span class="w"> </span><span class="n">device</span><span class="p">,</span><span class="w"> </span><span class="n">pb</span><span class="o">::</span><span class="n">MediaProfile</span><span class="o">::</span><span class="n">Enum</span><span class="w"> </span><span class="n">media_profile</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">switch</span><span class="p">(</span><span class="n">media_profile</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="no">pb</span><span class="o">::</span><span class="no">MediaProfile</span><span class="o">::</span><span class="no">CDRom</span><span class="p">:</span>
 <span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">p</span><span class="o">::</span><span class="n">ustring</span><span class="p">(</span><span class="s">&quot;CD-ROM. Read only CD.&quot;</span><span class="p">);</span><span class="w"> </span>

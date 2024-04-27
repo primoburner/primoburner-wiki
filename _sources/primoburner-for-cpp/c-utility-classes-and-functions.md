@@ -12,14 +12,37 @@ This topic lists the utility classes and functions used by the C++ code snippets
 
 ## Functions
 
+### media_state_string
+
+```cpp
+#include <primo/burner/pb.h>
+#include <primo/platform/ustring.h>
+#include <primo/platform/reference++.h>
+
+namespace p = primo;
+namespace pb = primo::burner;
+
+p::ustring media_state_string(pb::MediaReady::Enum media_state)
+{
+    switch (media_state) {
+    case pb::MediaReady::StateUnknown:
+        return "Unknown";
+    case pb::MediaReady::NotPresent:
+        return "Not Present";
+    case pb::MediaReady::Present:
+        return "Present";
+    default:
+        return "Unknown";
+    }
+}
+```
+
 ### media_is_fully_formatted
 
 ``` cpp
 #include <primo/burner/pb.h>
 #include <primo/platform/ustring.h>
 #include <primo/platform/reference++.h>
-
-#include <iostream>
 
 namespace p = primo;
 namespace pb = primo::burner;
@@ -50,6 +73,13 @@ const bool media_is_fully_formatted(pb::Device* device)
 ### media_profile_string
 
 ```cpp
+#include <primo/burner/pb.h>
+#include <primo/platform/ustring.h>
+#include <primo/platform/reference++.h>
+
+namespace p = primo;
+namespace pb = primo::burner;
+
 p::ustring media_profile_string(pb::Device* device, pb::MediaProfile::Enum media_profile) {
     switch(media_profile) {
         case pb::MediaProfile::CDRom:
@@ -143,4 +173,3 @@ p::ustring media_profile_string(pb::Device* device, pb::MediaProfile::Enum media
     }
 }
 ```
-
