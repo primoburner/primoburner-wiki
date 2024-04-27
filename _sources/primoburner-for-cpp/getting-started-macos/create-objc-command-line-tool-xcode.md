@@ -35,7 +35,7 @@ This topic describes the steps needed to configure an Objective-C Command Line T
     ```
 
 6. In Xcode, select the `enum-devices` project in Xcode, and then the 'Build Settings' tab: 
-    * Under Apple Clang - Language - C++, set the C++ Language Dialect to `C++17[-std=c++17]`
+    * Under Apple Clang - Language - C++, set the C++ Language Dialect to `C++20[-std=c++20]`
     * Under Search Paths | Header Search Paths, add the `$(PROJECT_DIR)/primoburner/include` directory to the list
     * Under linking - General | Runpath Search Paths, add `@executable_path` to the list 
     * Set the Build Products Path to `$(PROJECT_DIR)/build`

@@ -21,7 +21,7 @@ Start by creating the main function:
 #include <primo/platform/reference++.h>
 
 #include <iostream>
-#include <iomanip>
+#include <format>
 
 namespace p = primo;
 namespace pb = primo::burner;
@@ -95,11 +95,12 @@ void read_media_info(pb::Device* device)
     auto systemPath = p::ustring(device->systemPath());
 
     auto media_profile = device->mediaProfile();
+    auto media_profile_str = media_profile_string(device, media_profile);
 
-    cout << "  (" << device->driveLetter() << ":) - " << description.str() << endl;
-    cout << "  --- Media Info ---" << endl;
-    cout << "  Media Profile : " << media_profile_string(device, media_profile) << endl;
-    cout << "  Blank         : " << (device->isMediaBlank() ? "yes" : "no") << endl;
+    cout << format("  ( {}:) - {}", device->driveLetter(), description.str()) << endl;
+    cout << "  --- Media Info --- " << endl;
+    cout << format("  Media Profile : {}", media_profile_str.str()) << endl;;
+    cout << format("  Blank         : {}", device->isMediaBlank() ? "yes" : "no") << endl;
     
     auto media_info = device->readMediaInfo();
     if (media_info) {
@@ -122,26 +123,6 @@ void read_media_info(pb::Device* device)
 For the `media_profile_string` function definition see [C++ Utility Classes and Functions](/primoburner-for-cpp/c-utility-classes-and-functions)
 
 
-## Print BD Info
-
-```cpp
-void print_bd_info(pb::MediaInfo* media_info)
-{
-    using namespace std;
-
-    auto bd_info = media_info->bdInfo();
-    if(bd_info) {
-        auto manufacturerID = primo::ustring(bd_info->manufacturerID());
-        auto mediaTypeID = primo::ustring(bd_info->mediaTypeID());
-        
-        cout << "  --- BD Info ---" << endl;
-        cout << "  Manufacturer ID  : " << manufacturerID.str() << endl;
-        cout << "  Media Type ID    : " << mediaTypeID.str() << endl;
-        cout << "  Product Revision : " << setfill('0') << setw(3) << bd_info->productRevision() << endl;
-    }
-}
-```
-
 ## Print DVD Info
 
 ```cpp
@@ -149,7 +130,7 @@ void print_dvd_info(pb::MediaInfo* media_info)
 {
     using namespace std;
 
-    cout << "  --- DVD Media Info ---" << endl;
+    cout << "  --- DVD Specific Media Info ---" << endl;
     cout << "  DVD Video CSS (DVD Audio CPPM) : " << (media_info->isDVDCssCppm() ? "yes" : "no") << endl;
     cout << "  DVD Recordable with CPRM : " << (media_info->isDVDCprm() ? "yes" : "no") << endl;
 
@@ -158,6 +139,31 @@ void print_dvd_info(pb::MediaInfo* media_info)
     {
         print_dvd_plus_info(dvd_info->plusInfo());
         print_dvd_minus_info(dvd_info->minusInfo());
+    }
+}
+```
+
+## Print DVD Minus Info
+
+```cpp
+vvoid print_dvd_minus_info(pb::DVDMinusMediaInfo* dvd_minus_info)
+{
+    using namespace std;
+
+    if(dvd_minus_info)
+    {
+        auto manufacturerID1 = primo::ustring(dvd_minus_info->manufacturerID1());
+        auto manufacturerID2 = primo::ustring(dvd_minus_info->manufacturerID2());
+
+        uint8_t buffer[6] = {0};
+        uint32_t retrieved = dvd_minus_info->manufacturerID3((uint8_t*)buffer, sizeof(buffer));
+
+        cout << "  --- DVD Minus Specific Info ---" << endl;
+        cout << format("  First Manufacturer ID  : {}", manufacturerID1.str()) << endl;
+        cout << format("  Second Manufacturer ID : {}", manufacturerID2.str()) << endl;
+        cout << "  Third Manufacturer ID - bytes retrieved: " << retrieved << endl;
+        for (size_t i = 0; i < retrieved; i++)
+            cout << format("  Byte # {} {:#04x}", (int)i, buffer[i]) << endl;
     }
 }
 ```
@@ -173,35 +179,30 @@ void print_dvd_plus_info(pb::DVDPlusMediaInfo* dvd_plus_info)
         auto manufacturerID = primo::ustring(dvd_plus_info->manufacturerID());
         auto mediaTypeID = primo::ustring(dvd_plus_info->mediaTypeID());
 
-        cout << "  --- DVD Plus Info ---" << endl;
-        cout << "  Manufacturer ID  : " << manufacturerID.str() << endl;
-        cout << "  Media Type ID    : " << mediaTypeID.str() << endl;
-        cout << "  Product Revision : " << setfill('0') << setw(3) << dvd_plus_info->productRevision() << endl;
+        cout << "  --- DVD Plus Specific Info ---" << endl;
+        cout << format("  Manufacturer ID  : {}", manufacturerID.str()) << endl;
+        cout << format("  Media Type ID    : {}", mediaTypeID.str()) << endl;
+        cout << format("  Product Revision : {:03d}", dvd_plus_info->productRevision()) << endl;
     }
 }
 ```
 
-## Print DVD Minus Info
+## Print BD Info
 
 ```cpp
-void print_dvd_minus_info(pb::DVDMinusMediaInfo* dvd_minus_info)
+void print_bd_info(pb::MediaInfo* media_info)
 {
     using namespace std;
 
-    if(dvd_minus_info)
-    {
-        auto manufacturerID1 = primo::ustring(dvd_minus_info->manufacturerID1());
-        auto manufacturerID2 = primo::ustring(dvd_minus_info->manufacturerID2());
-
-        uint8_t buffer[6] = {0};
-        uint32_t retrieved = dvd_minus_info->manufacturerID3((uint8_t*)buffer, sizeof(buffer));
-
-        cout << "  --- DVD Minus Info ---" << endl;
-        cout << "  First Manufacturer ID  : " << manufacturerID1.str() << endl;
-        cout << "  Second Manufacturer ID : " << manufacturerID2.str() << endl;
-        cout << "  Third Manufacturer ID - bytes retrieved: " << retrieved << endl;
-        for (size_t i = 0; i < retrieved; i++)
-            cout << "  Byte # " << (int)i << " 0" << hex << setfill('0') << buffer[i] << endl;
+    auto bd_info = media_info->bdInfo();
+    if(bd_info) {
+        auto manufacturerID = primo::ustring(bd_info->manufacturerID());
+        auto mediaTypeID = primo::ustring(bd_info->mediaTypeID());
+        
+        cout << "  --- BD Specific Info ---" << endl;
+        cout << format("  Manufacturer ID  : {}", manufacturerID.str()) << endl;
+        cout << format("  Media Type ID    : {}", mediaTypeID.str()) << endl;
+        cout << format("  Product Revision : {:03d}", bd_info->productRevision()) << endl;
     }
 }
 ```
@@ -216,7 +217,7 @@ This is the complete C++ code including all supporting functions:
 #include <primo/platform/reference++.h>
 
 #include <iostream>
-#include <iomanip>
+#include <format>
 
 namespace p = primo;
 namespace pb = primo::burner;
@@ -345,10 +346,10 @@ void print_bd_info(pb::MediaInfo* media_info)
         auto manufacturerID = primo::ustring(bd_info->manufacturerID());
         auto mediaTypeID = primo::ustring(bd_info->mediaTypeID());
         
-        cout << "  --- BD Info ---" << endl;
-        cout << "  Manufacturer ID  : " << manufacturerID.str() << endl;
-        cout << "  Media Type ID    : " << mediaTypeID.str() << endl;
-        cout << "  Product Revision : " << setfill('0') << setw(3) << bd_info->productRevision() << endl;
+        cout << "  --- BD Specific Info ---" << endl;
+        cout << format("  Manufacturer ID  : {}", manufacturerID.str()) << endl;
+        cout << format("  Media Type ID    : {}", mediaTypeID.str()) << endl;
+        cout << format("  Product Revision : {:03d}", bd_info->productRevision()) << endl;
     }
 }
 
@@ -360,10 +361,10 @@ void print_dvd_plus_info(pb::DVDPlusMediaInfo* dvd_plus_info)
         auto manufacturerID = primo::ustring(dvd_plus_info->manufacturerID());
         auto mediaTypeID = primo::ustring(dvd_plus_info->mediaTypeID());
 
-        cout << "  --- DVD Plus Info ---" << endl;
-        cout << "  Manufacturer ID  : " << manufacturerID.str() << endl;
-        cout << "  Media Type ID    : " << mediaTypeID.str() << endl;
-        cout << "  Product Revision : " << setfill('0') << setw(3) << dvd_plus_info->productRevision() << endl;
+        cout << "  --- DVD Plus Specific Info ---" << endl;
+        cout << format("  Manufacturer ID  : {}", manufacturerID.str()) << endl;
+        cout << format("  Media Type ID    : {}", mediaTypeID.str()) << endl;
+        cout << format("  Product Revision : {:03d}", dvd_plus_info->productRevision()) << endl;
     }
 }
 
@@ -379,12 +380,12 @@ void print_dvd_minus_info(pb::DVDMinusMediaInfo* dvd_minus_info)
         uint8_t buffer[6] = {0};
         uint32_t retrieved = dvd_minus_info->manufacturerID3((uint8_t*)buffer, sizeof(buffer));
 
-        cout << "  --- DVD Minus Info ---" << endl;
-        cout << "  First Manufacturer ID  : " << manufacturerID1.str() << endl;
-        cout << "  Second Manufacturer ID : " << manufacturerID2.str() << endl;
+        cout << "  --- DVD Minus Specific Info ---" << endl;
+        cout << format("  First Manufacturer ID  : {}", manufacturerID1.str()) << endl;
+        cout << format("  Second Manufacturer ID : {}", manufacturerID2.str()) << endl;
         cout << "  Third Manufacturer ID - bytes retrieved: " << retrieved << endl;
         for (size_t i = 0; i < retrieved; i++)
-            cout << "  Byte # " << (int)i << " 0" << hex << setfill('0') << buffer[i] << endl;
+            cout << format("  Byte # {} {:#04x}", (int)i, buffer[i]) << endl;
     }
 }
 
@@ -392,7 +393,7 @@ void print_dvd_info(pb::MediaInfo* media_info)
 {
     using namespace std;
 
-    cout << "  --- DVD Media Info ---" << endl;
+    cout << "  --- DVD Specific Media Info ---" << endl;
     cout << "  DVD Video CSS (DVD Audio CPPM) : " << (media_info->isDVDCssCppm() ? "yes" : "no") << endl;
     cout << "  DVD Recordable with CPRM : " << (media_info->isDVDCprm() ? "yes" : "no") << endl;
 
@@ -413,11 +414,12 @@ void read_media_info(pb::Device* device)
     auto systemPath = p::ustring(device->systemPath());
 
     auto media_profile = device->mediaProfile();
+    auto media_profile_str = media_profile_string(device, media_profile);
 
-    cout << "  (" << device->driveLetter() << ":) - " << description.str() << endl;
-    cout << "  --- Media Info ---" << endl;
-    cout << "  Media Profile : " << media_profile_string(device, media_profile) << endl;
-    cout << "  Blank         : " << (device->isMediaBlank() ? "yes" : "no") << endl;
+    cout << format("  ( {}:) - {}", device->driveLetter(), description.str()) << endl;
+    cout << "  --- Media Info --- " << endl;
+    cout << format("  Media Profile : {}", media_profile_str.str()) << endl;;
+    cout << format("  Blank         : {}", device->isMediaBlank() ? "yes" : "no") << endl;
     
     auto media_info = device->readMediaInfo();
     if (media_info) {

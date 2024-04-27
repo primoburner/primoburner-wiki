@@ -151,7 +151,7 @@ chmod +x build.sh
     target_compile_definitions(${target} PUBLIC  _DEBUG)
 
     # compile options for Debug x64
-    target_compile_options(${target} PRIVATE -std=c++17 -stdlib=libc++)
+    target_compile_options(${target} PRIVATE -std=c++20 -stdlib=libc++)
     target_compile_options(${target} PRIVATE -m64 -fPIC)
     target_compile_options(${target} PRIVATE -g)
 
