@@ -1,6 +1,6 @@
 ---
 title: Create a C++ Console App in Visual Studio on Windows
-metadata:
+html_meta:
     description: This topic describes the steps needed to configure a C++ console application in Visual Studio.
 taxonomy:
     category: docs

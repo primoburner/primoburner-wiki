@@ -1,6 +1,6 @@
 ---
 title: About PrimoBurner for C++
-metadata:
+html_meta:
     description: This topic describes the C++ development requirements for Windows, Mac and Linux.
 taxonomy:
     category: docs

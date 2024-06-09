@@ -4,7 +4,7 @@ title: Using DataDisc
 taxonomy:
     category: [docs]
     tags: [.NET,DataDisc]
-metadata:
+html_meta:
     description: Use the DataDisc class to burn files to BD, DVD, and CD media
 orphan:
 ---

@@ -1,6 +1,6 @@
 ---
 title: Developing with Visual Studio Code on Ubuntu
-metadata:
+html_meta:
     description: This page describes the steps needed to setup Visual Studio Code for PrimoBurner development on Ubuntu
 taxonomy:
     category: docs

@@ -4,7 +4,7 @@ slug: burn-directory-to-dvd-plus-r
 taxonomy:
     category: [docs]
     tags: [.NET,DataDisc,Device,DeviceEnumerator,DVD+R,Engine,Library,UnitReady]
-metadata:
+html_meta:
     description: How to  burn the contents of a directory to a blank DVD+R disc.
 orphan:
 ---

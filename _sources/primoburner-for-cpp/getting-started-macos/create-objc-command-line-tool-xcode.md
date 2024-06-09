@@ -1,6 +1,6 @@
 ---
 title: Create an Objective-C Command Line Tool in Xcode on macOS
-metadata:
+html_meta:
     description: This page describes the steps needed to configure an Objective-C Command Line Tool in Xcode.
 taxonomy:
     category: docs

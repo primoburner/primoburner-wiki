@@ -3,7 +3,7 @@ title: Using DataDisc
 taxonomy:
     category: [docs]
     tags: [DataDisc]
-metadata:
+html_meta:
     description: Use the DataDisc class to burn files to BD, DVD, and CD media
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Getting Started - macOS
-metadata:
+html_meta:
     description: Steps to configure your environment for PrimoBurner development on macOS.
 taxonomy:
     category: docs

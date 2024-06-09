@@ -4,7 +4,7 @@ slug: source-directory
 taxonomy:
     category: [docs]
     tags: [DataDisc]
-metadata:
+html_meta:
     description: This topic explains how to create the source directory for the BD, DVD, and CD burning samples from the
 ---
 

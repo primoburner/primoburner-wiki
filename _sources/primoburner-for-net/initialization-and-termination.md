@@ -1,6 +1,6 @@
 ---
 title: Initialization and Termination
-metadata:
+html_meta:
     description: This topic describes how to initialize and terminate the PrimoBurner API.
 taxonomy:
     category: docs

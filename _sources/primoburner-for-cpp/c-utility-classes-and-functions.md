@@ -1,6 +1,6 @@
 ---
 title: C++ Utility Classes and Functions
-metadata:
+html_meta:
     description: This topic lists the utility classes and functions used by the C++ code snippets on this wiki.
 taxonomy:
     category: docs

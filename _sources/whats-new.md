@@ -1,6 +1,6 @@
 ---
 title: What’s New
-metadata:
+html_meta:
     description: Discover what&#039;s new and improved in the latest PrimoBurner version.
 taxonomy:
     category: docs

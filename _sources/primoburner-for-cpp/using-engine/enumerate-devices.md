@@ -1,6 +1,6 @@
 ---
 title: Enumerate Devices
-metadata:
+html_meta:
     description: How to enumerate the optical devices connected to your system.
 taxonomy:
     category: [docs]

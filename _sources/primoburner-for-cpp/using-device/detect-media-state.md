@@ -1,6 +1,6 @@
 ---
 title: Detect Media Presence
-metadata:
+html_meta:
     description: How to detect whether there is media in a device or not.
 ---
 

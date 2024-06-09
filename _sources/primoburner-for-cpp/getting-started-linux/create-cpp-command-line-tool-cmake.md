@@ -1,6 +1,6 @@
 ---
 title: Create a Command Line Tool using CMake on Ubuntu
-metadata:
+html_meta:
     description: This page describes the steps needed to configure CMake project for PrimoBurner Command Line Tool on Ubuntu
 taxonomy:
     category: docs

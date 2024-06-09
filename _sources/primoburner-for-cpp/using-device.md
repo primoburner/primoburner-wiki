@@ -3,7 +3,7 @@ title: Using Device
 taxonomy:
     category: [docs]
     tags: [Device]
-metadata:
+html_meta:
     description: Use the Device class to query device state and to read optical media properties 
 ---
 

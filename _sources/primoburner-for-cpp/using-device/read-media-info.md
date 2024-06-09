@@ -3,7 +3,7 @@ title: Read Media Info
 taxonomy:
     category: [docs]
     tags: [BDMediaInfo,Device,DVDMediaInfo,DVDMinusMediaInfo,DVDPlusMediaInfo,MediaInfo]
-metadata:
+html_meta:
     description: How to read media information such as manufacturer id, and media type id
 ---
 
